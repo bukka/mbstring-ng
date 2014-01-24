@@ -47,8 +47,6 @@
 #include "php_mbstring.h"
 /* }}} */
 
-#if HAVE_MBSTRING_NG
-
 #define PHP_MBREGEX_MAXCACHE 50
 
 #define PHP_MB_FUNCTION(name) PHP_FUNCTION(mb2_ ## name)
@@ -3993,8 +3991,6 @@ out:
 	php_mb2_ustring_dtor(&pattern_u);
 	return retval;
 }
-
-#endif	/* HAVE_MBSTRING */
 
 /*
  * Local variables:

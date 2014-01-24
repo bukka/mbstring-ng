@@ -26,8 +26,6 @@
 #define HAVE_MBSTRING_NG 1
 #endif
 
-#if HAVE_MBSTRING_NG
-
 #include <unicode/utypes.h>
 #include <unicode/pwin32.h>
 
@@ -121,8 +119,6 @@ ZEND_END_MODULE_GLOBALS(mbstring_ng)
 #endif	/* HAVE_MBSTRING */
 
 #define phpext_mbstring_ng_ptr mbstring_ng_module_ptr
-
-#endif		/* _MBSTRING_H */
 
 /*
  * Local variables:
