@@ -6,8 +6,8 @@ Function overloading test 2
 	if (!function_exists("mail")) {
 		die('skip mail() function is not available.');
 	}
-	if (!function_exists("mb_ereg_replace")) {
-		die('skip mb_ereg_replace() function is not available.');
+	if (!function_exists("mb2_ereg_replace")) {
+		die('skip mb2_ereg_replace() function is not available.');
 	}
 ?>
 --INI--
@@ -16,15 +16,15 @@ mbstring.func_overload=7
 mbstring.internal_encoding=EUC-JP
 --FILE--
 <?php
-echo mb_internal_encoding()."\n";
+echo mb2_internal_encoding()."\n";
 
 $ngchars = array('Ç½','É½','»½','¥½');
 $str = '¸µÏ½ÍÜ»½Ðò¼Òº¾µ½É½¸½Ç½ÎÏÉ½¼¨±½ÌÈÄäË½ÎÏÅ½ÉÕ¹½Ê¸·½»ÒÍ½ÃÎñ½Æ¬¥½¥Õ¥¡¡¼';
-$converted_str = mb_convert_encoding($str, 'Shift_JIS');
-mb_regex_encoding('Shift_JIS');
+$converted_str = mb2_convert_encoding($str, 'Shift_JIS');
+mb2_regex_encoding('Shift_JIS');
 foreach($ngchars as $c) {
-	$c = mb_convert_encoding($c, 'Shift_JIS');
-	$replaced = mb_convert_encoding(ereg_replace($c, '!!', $converted_str), mb_internal_encoding(), 'Shift_JIS');
+	$c = mb2_convert_encoding($c, 'Shift_JIS');
+	$replaced = mb2_convert_encoding(ereg_replace($c, '!!', $converted_str), mb2_internal_encoding(), 'Shift_JIS');
 	var_dump(strpos($replaced, '!!'));
 }
 ?>

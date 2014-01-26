@@ -12,7 +12,7 @@ function test($enc, $map) {
 	print "$enc\n";
 
 	foreach($map as $fromc => $toc) {
-		$ustr = mb_convert_encoding(pack('C', $fromc), 'UCS-4BE', $enc);
+		$ustr = mb2_convert_encoding(pack('C', $fromc), 'UCS-4BE', $enc);
 		foreach (unpack('Nc', $ustr) as $unic);
 		printf("0x%04x, 0x%04x\n", $toc, $unic);
 	}

@@ -1,21 +1,21 @@
 --TEST--
-Test mb_stristr() function : usage variation - multiple needles
+Test mb2_stristr() function : usage variation - multiple needles
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_stristr') or die("skip mb_stristr() is not available in this build");
+function_exists('mb2_stristr') or die("skip mb2_stristr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_stristr(string haystack, string needle[, bool part[, string encoding]])
+/* Prototype  : string mb2_stristr(string haystack, string needle[, bool part[, string encoding]])
  * Description: Finds first occurrence of a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_stristr() : basic functionality ***\n";
+echo "*** Testing mb2_stristr() : basic functionality ***\n";
 
-mb_internal_encoding('UTF-8');
+mb2_internal_encoding('UTF-8');
 
 //ascii mixed case, multiple needles
 $string_ascii = b'abcDef zBcDyx';
@@ -25,31 +25,31 @@ $needle_ascii_lower = b"bcd";
 
 //Greek string in mixed case UTF-8 with multiple needles
 $string_mb = base64_decode('zrrOu868zr3Ovs6fzqDOoSDOus67zpzOnc6+zr/OoA==');
-$needle_mb_upper = base64_decode('zpzOnc6ezp8=');
-$needle_mb_lower = base64_decode('zrzOvc6+zr8=');
-$needle_mb_mixed = base64_decode('zpzOnc6+zr8=');
+$needle_mb2_upper = base64_decode('zpzOnc6ezp8=');
+$needle_mb2_lower = base64_decode('zrzOvc6+zr8=');
+$needle_mb2_mixed = base64_decode('zpzOnc6+zr8=');
 
 echo "\n-- ASCII string: needle exists --\n";
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_upper, false)));
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_upper, true)));
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_lower, false)));
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_lower, true)));
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_mixed, false)));
-var_dump(bin2hex(mb_stristr($string_ascii, $needle_ascii_mixed, true)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_upper, false)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_upper, true)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_lower, false)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_lower, true)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_mixed, false)));
+var_dump(bin2hex(mb2_stristr($string_ascii, $needle_ascii_mixed, true)));
 
 
 echo "\n-- Multibyte string: needle exists --\n";
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_upper, false)));
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_upper, true)));
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_lower, false)));
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_lower, true)));
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_mixed, false)));
-var_dump(bin2hex(mb_stristr($string_mb, $needle_mb_mixed, true)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_upper, false)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_upper, true)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_lower, false)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_lower, true)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_mixed, false)));
+var_dump(bin2hex(mb2_stristr($string_mb, $needle_mb2_mixed, true)));
 
 ?>
 ===DONE===
 --EXPECT--
-*** Testing mb_stristr() : basic functionality ***
+*** Testing mb2_stristr() : basic functionality ***
 
 -- ASCII string: needle exists --
 string(24) "6263446566207a4263447978"

@@ -1,14 +1,14 @@
 --TEST--
-mb_split() compat test 1
+mb2_split() compat test 1
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_split') or die("skip mb_split() is not available in this build");
+function_exists('mb2_split') or die("skip mb2_split() is not available in this build");
 ?>
 --FILE--
 <?php
 /* (counterpart: ext/standard/tests/reg/009.phpt) */
-	$a=mb_split("[[:space:]]","this is	a
+	$a=mb2_split("[[:space:]]","this is	a
 test");
 	echo count($a) . "\n";
 	for ($i = 0; $i < count($a); $i++) {

@@ -1,19 +1,19 @@
 --TEST--
-Test mb_strrchr() function : usage variation - different values for part
+Test mb2_strrchr() function : usage variation - different values for part
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strrchr') or die("skip mb_strrchr() is not available in this build");
+function_exists('mb2_strrchr') or die("skip mb2_strrchr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strrchr(string haystack, string needle[, bool part[, string encoding]])
+/* Prototype  : string mb2_strrchr(string haystack, string needle[, bool part[, string encoding]])
  * Description: Finds the last occurrence of a character in a string within another 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_strrchr() : usage variation ***\n";
+echo "*** Testing mb2_strrchr() : usage variation ***\n";
 
 // Define error handler
 function test_error_handler($err_no, $err_msg, $filename, $linenum, $vars) {
@@ -117,7 +117,7 @@ $inputs = array(
 
 foreach($inputs as $key =>$value) {
       echo "\n--$key--\n";
-      $res = mb_strrchr($haystack, $needle, $value, $encoding);
+      $res = mb2_strrchr($haystack, $needle, $value, $encoding);
       if ($res === false) {
          var_dump($res);
       }
@@ -131,7 +131,7 @@ fclose($fp);
 ?>
 ===DONE===
 --EXPECTF--
-*** Testing mb_strrchr() : usage variation ***
+*** Testing mb2_strrchr() : usage variation ***
 
 --int 0--
 string(8) "5f76616c"
@@ -161,19 +161,19 @@ string(12) "737472696e67"
 string(12) "737472696e67"
 
 --empty array--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
 bool(false)
 
 --int indexed array--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
 bool(false)
 
 --associative array--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
 bool(false)
 
 --nested arrays--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, array given, %s(%d)
 bool(false)
 
 --uppercase NULL--
@@ -213,11 +213,11 @@ string(12) "737472696e67"
 string(12) "737472696e67"
 
 --instance of classWithToString--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, object given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, object given, %s(%d)
 bool(false)
 
 --instance of classWithoutToString--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, object given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, object given, %s(%d)
 bool(false)
 
 --undefined var--
@@ -227,6 +227,6 @@ string(8) "5f76616c"
 string(8) "5f76616c"
 
 --resource--
-Error: 2 - mb_strrchr() expects parameter 3 to be boolean, resource given, %s(%d)
+Error: 2 - mb2_strrchr() expects parameter 3 to be boolean, resource given, %s(%d)
 bool(false)
 ===DONE===

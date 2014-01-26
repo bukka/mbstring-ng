@@ -1,23 +1,23 @@
 --TEST--
-Test mb_strtoupper() function : usage varitations - Pass different data types as $encoding arg
+Test mb2_strtoupper() function : usage varitations - Pass different data types as $encoding arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtoupper') or die("skip mb_strtoupper() is not available in this build");
+function_exists('mb2_strtoupper') or die("skip mb2_strtoupper() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtoupper(string $sourcestring [, string $encoding]
+/* Prototype  : string mb2_strtoupper(string $sourcestring [, string $encoding]
  * Description: Returns a uppercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types as $encoding argument to mb_strtoupper() to test behaviour
+ * Pass different data types as $encoding argument to mb2_strtoupper() to test behaviour
  * Where possible, 'UTF-8' is entered as string value
  */
 
-echo "*** Testing mb_strtoupper() : usage variations ***\n";
+echo "*** Testing mb2_strtoupper() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $sourcestring = b'Hello, World';
@@ -90,11 +90,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strtoupper()
+// loop through each element of $inputs to check the behavior of mb2_strtoupper()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  $res = mb_strtoupper($sourcestring, $input);
+  $res = mb2_strtoupper($sourcestring, $input);
   if ($res === false || $res == NULL) {
      var_dump($res);
   }
@@ -110,91 +110,91 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strtoupper() : usage variations ***
+*** Testing mb2_strtoupper() : usage variations ***
 
 -- Iteration 1 --
 
-Warning: mb_strtoupper(): Unknown encoding "0" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "0" in %s on line %d
 bool(false)
 
 -- Iteration 2 --
 
-Warning: mb_strtoupper(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 3 --
 
-Warning: mb_strtoupper(): Unknown encoding "12345" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "12345" in %s on line %d
 bool(false)
 
 -- Iteration 4 --
 
-Warning: mb_strtoupper(): Unknown encoding "-2345" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "-2345" in %s on line %d
 bool(false)
 
 -- Iteration 5 --
 
-Warning: mb_strtoupper(): Unknown encoding "10.5" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "10.5" in %s on line %d
 bool(false)
 
 -- Iteration 6 --
 
-Warning: mb_strtoupper(): Unknown encoding "-10.5" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "-10.5" in %s on line %d
 bool(false)
 
 -- Iteration 7 --
 
-Warning: mb_strtoupper(): Unknown encoding "123456789000" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "123456789000" in %s on line %d
 bool(false)
 
 -- Iteration 8 --
 
-Warning: mb_strtoupper(): Unknown encoding "1.23456789E-9" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "1.23456789E-9" in %s on line %d
 bool(false)
 
 -- Iteration 9 --
 
-Warning: mb_strtoupper(): Unknown encoding "0.5" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "0.5" in %s on line %d
 bool(false)
 
 -- Iteration 10 --
 
-Warning: mb_strtoupper(): Unknown encoding "(null)" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "(null)" in %s on line %d
 bool(false)
 
 -- Iteration 11 --
 
-Warning: mb_strtoupper(): Unknown encoding "(null)" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "(null)" in %s on line %d
 bool(false)
 
 -- Iteration 12 --
 
-Warning: mb_strtoupper(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 13 --
 
-Warning: mb_strtoupper(): Unknown encoding "" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 14 --
 
-Warning: mb_strtoupper(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 15 --
 
-Warning: mb_strtoupper(): Unknown encoding "" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 16 --
 
-Warning: mb_strtoupper(): Unknown encoding "" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 17 --
 
-Warning: mb_strtoupper(): Unknown encoding "" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 18 --
@@ -211,16 +211,16 @@ string(24) "48454c4c4f2c20574f524c44"
 
 -- Iteration 22 --
 
-Warning: mb_strtoupper(): Unknown encoding "(null)" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "(null)" in %s on line %d
 bool(false)
 
 -- Iteration 23 --
 
-Warning: mb_strtoupper(): Unknown encoding "(null)" in %s on line %d
+Warning: mb2_strtoupper(): Unknown encoding "(null)" in %s on line %d
 bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_strtoupper() expects parameter 2 to be string, resource given in %s on line %d
+Warning: mb2_strtoupper() expects parameter 2 to be string, resource given in %s on line %d
 NULL
 Done

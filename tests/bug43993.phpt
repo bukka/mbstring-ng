@@ -1,18 +1,18 @@
 --TEST--
-Bug #43993 (mb_substr_count() behaves differently to substr_count() with overlapping needles)
+Bug #43993 (mb2_substr_count() behaves differently to substr_count() with overlapping needles)
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --FILE--
 <?php
-var_dump(mb_substr_count("abcabcabca", "abcabc"));
-var_dump(mb_substr_count("abcabcabca", "abc"));
-var_dump(mb_substr_count("abcabcabca", "cab"));
-var_dump(mb_substr_count("abcabcabca", "bca"));
-var_dump(mb_substr_count("ababababab", "ba"));
-var_dump(mb_substr_count("ababababab", "ab"));
-var_dump(mb_substr_count("ababababab", "bc"));
-var_dump(mb_substr_count("aaaaaaaaaa", "a"));
-var_dump(mb_substr_count("aaaaaaaaaa", "b"));
+var_dump(mb2_substr_count("abcabcabca", "abcabc"));
+var_dump(mb2_substr_count("abcabcabca", "abc"));
+var_dump(mb2_substr_count("abcabcabca", "cab"));
+var_dump(mb2_substr_count("abcabcabca", "bca"));
+var_dump(mb2_substr_count("ababababab", "ba"));
+var_dump(mb2_substr_count("ababababab", "ab"));
+var_dump(mb2_substr_count("ababababab", "bc"));
+var_dump(mb2_substr_count("aaaaaaaaaa", "a"));
+var_dump(mb2_substr_count("aaaaaaaaaa", "b"));
 ?>
 --EXPECT--
 int(1)

@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strtolower() function : usage variations - pass different data types as $sourcestring arg
+Test mb2_strtolower() function : usage variations - pass different data types as $sourcestring arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtolower') or die("skip mb_strtolower() is not available in this build");
+function_exists('mb2_strtolower') or die("skip mb2_strtolower() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtolower(string $sourcestring [, string $encoding])
+/* Prototype  : string mb2_strtolower(string $sourcestring [, string $encoding])
  * Description: Returns a lowercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types to $sourcestring argument to test behaviour of mb_strtolower()
+ * Pass different data types to $sourcestring argument to test behaviour of mb2_strtolower()
  */
 
-echo "*** Testing mb_strtolower() : usage variations ***\n";
+echo "*** Testing mb2_strtolower() : usage variations ***\n";
 
 
 //get an unset variable
@@ -87,11 +87,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strtolower()
+// loop through each element of $inputs to check the behavior of mb2_strtolower()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strtolower($input) );
+  var_dump( mb2_strtolower($input) );
   $iterator++;
 };
 
@@ -100,7 +100,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strtolower() : usage variations ***
+*** Testing mb2_strtolower() : usage variations ***
 
 -- Iteration 1 --
 string(1) "0"
@@ -173,6 +173,6 @@ string(0) ""
 
 -- Iteration 24 --
 
-Warning: mb_strtolower() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_strtolower() expects parameter 1 to be string, resource given in %s on line %d
 NULL
 Done

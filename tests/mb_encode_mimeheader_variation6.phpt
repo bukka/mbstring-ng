@@ -1,13 +1,13 @@
 --TEST--
-Test mb_encode_mimeheader() function : usage variations - Pass different strings to $linefeed arg
+Test mb2_encode_mimeheader() function : usage variations - Pass different strings to $linefeed arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_encode_mimeheader') or die("skip mb_encode_mimeheader() is not available in this build");
+function_exists('mb2_encode_mimeheader') or die("skip mb2_encode_mimeheader() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_encode_mimeheader
+/* Prototype  : string mb2_encode_mimeheader
  * (string $str [, string $charset [, string $transfer_encoding [, string $linefeed [, int $indent]]]])
  * Description: Converts the string to MIME "encoded-word" in the format of =?charset?(B|Q)?encoded_string?= 
  * Source code: ext/mbstring/mbstring.c
@@ -17,9 +17,9 @@ function_exists('mb_encode_mimeheader') or die("skip mb_encode_mimeheader() is n
  * Pass different strings to $linefeed argument
  */
 
-echo "*** Testing mb_encode_mimeheader() : usage variations ***\n";
+echo "*** Testing mb2_encode_mimeheader() : usage variations ***\n";
 
-mb_internal_encoding('utf-8');
+mb2_internal_encoding('utf-8');
 
 $linefeeds = array("\r\n",
                    "\n",
@@ -29,7 +29,7 @@ $str = base64_decode('zpHPhc+Ez4wgzrXOr869zrHOuSDOtc67zrvOt869zrnOus+MIM66zrXOr8
 $iterator = 1;
 foreach ($linefeeds as $linefeed) {
 	echo "\n-- Iteration $iterator --\n";
-	var_dump(mb_encode_mimeheader($str, 'utf-8', 'B', $linefeed));
+	var_dump(mb2_encode_mimeheader($str, 'utf-8', 'B', $linefeed));
 	$iterator++;
 }
 
@@ -38,7 +38,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_encode_mimeheader() : usage variations ***
+*** Testing mb2_encode_mimeheader() : usage variations ***
 
 -- Iteration 1 --
 string(115) "=?UTF-8?B?zpHPhc+Ez4wgzrXOr869zrHOuSDOtc67zrvOt869zrnOus+MIM66zrXOr868?=

@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strrpos() function : usage variations - Pass different data types to $needle arg
+Test mb2_strrpos() function : usage variations - Pass different data types to $needle arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strrpos') or die("skip mb_strrpos() is not available in this build");
+function_exists('mb2_strrpos') or die("skip mb2_strrpos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
+/* Prototype  : int mb2_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
  * Description: Find position of last occurrence of a string within another 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass mb_strrpos() different data types as $needle argument to test behaviour
+ * Pass mb2_strrpos() different data types as $needle argument to test behaviour
  */
 
-echo "*** Testing mb_strrpos() : usage variations ***\n";
+echo "*** Testing mb2_strrpos() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $haystack = 'hello, world';
@@ -91,11 +91,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strrpos()
+// loop through each element of $inputs to check the behavior of mb2_strrpos()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strrpos($haystack, $input, $offset, $encoding));
+  var_dump( mb2_strrpos($haystack, $input, $offset, $encoding));
   $iterator++;
 };
 
@@ -105,7 +105,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strrpos() : usage variations ***
+*** Testing mb2_strrpos() : usage variations ***
 
 -- Iteration 1 --
 bool(false)
@@ -178,6 +178,6 @@ bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_strrpos() expects parameter 2 to be string, resource given in %s on line %d
+Warning: mb2_strrpos() expects parameter 2 to be string, resource given in %s on line %d
 bool(false)
 Done

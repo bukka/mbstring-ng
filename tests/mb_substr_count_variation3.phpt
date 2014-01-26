@@ -1,23 +1,23 @@
 --TEST--
-Test mb_substr_count() function :usage variations - pass different data types as $encoding arg
+Test mb2_substr_count() function :usage variations - pass different data types as $encoding arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_substr_count') or die("skip mb_substr_count() is not available in this build");
+function_exists('mb2_substr_count') or die("skip mb2_substr_count() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_substr_count(string $haystack, string $needle [, string $encoding])
+/* Prototype  : int mb2_substr_count(string $haystack, string $needle [, string $encoding])
  * Description: Count the number of substring occurrences 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types as $encoding argument to mb_substr_count() to test behaviour
+ * Pass different data types as $encoding argument to mb2_substr_count() to test behaviour
  * Where possible, 'UTF-8' is entered as string value
  */
 
-echo "*** Testing mb_substr_count() : usage variations ***\n";
+echo "*** Testing mb2_substr_count() : usage variations ***\n";
 
 // Initialise function arguments not being substituted (if any)
 $haystack = b'hello, world';
@@ -91,11 +91,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_substr_count()
+// loop through each element of $inputs to check the behavior of mb2_substr_count()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_substr_count($haystack, $needle, $input) );
+  var_dump( mb2_substr_count($haystack, $needle, $input) );
   $iterator++;
 };
 
@@ -104,91 +104,91 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_substr_count() : usage variations ***
+*** Testing mb2_substr_count() : usage variations ***
 
 -- Iteration 1 --
 
-Warning: mb_substr_count(): Unknown encoding "0" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "0" in %s on line %d
 bool(false)
 
 -- Iteration 2 --
 
-Warning: mb_substr_count(): Unknown encoding "1" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 3 --
 
-Warning: mb_substr_count(): Unknown encoding "12345" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "12345" in %s on line %d
 bool(false)
 
 -- Iteration 4 --
 
-Warning: mb_substr_count(): Unknown encoding "-2345" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "-2345" in %s on line %d
 bool(false)
 
 -- Iteration 5 --
 
-Warning: mb_substr_count(): Unknown encoding "10.5" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "10.5" in %s on line %d
 bool(false)
 
 -- Iteration 6 --
 
-Warning: mb_substr_count(): Unknown encoding "-10.5" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "-10.5" in %s on line %d
 bool(false)
 
 -- Iteration 7 --
 
-Warning: mb_substr_count(): Unknown encoding "123456789000" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "123456789000" in %s on line %d
 bool(false)
 
 -- Iteration 8 --
 
-Warning: mb_substr_count(): Unknown encoding "1.23456789E-9" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "1.23456789E-9" in %s on line %d
 bool(false)
 
 -- Iteration 9 --
 
-Warning: mb_substr_count(): Unknown encoding "0.5" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "0.5" in %s on line %d
 bool(false)
 
 -- Iteration 10 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 11 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 12 --
 
-Warning: mb_substr_count(): Unknown encoding "1" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 13 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 14 --
 
-Warning: mb_substr_count(): Unknown encoding "1" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 15 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 16 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 17 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 18 --
@@ -205,16 +205,16 @@ int(1)
 
 -- Iteration 22 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 23 --
 
-Warning: mb_substr_count(): Unknown encoding "" in %s on line %d
+Warning: mb2_substr_count(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_substr_count() expects parameter 3 to be string, resource given in %s on line %d
+Warning: mb2_substr_count() expects parameter 3 to be string, resource given in %s on line %d
 NULL
 Done

@@ -1,22 +1,22 @@
 --TEST--
-Test mb_substr() function : usage variations - pass unexpected arguments (including strings) in place of $str
+Test mb2_substr() function : usage variations - pass unexpected arguments (including strings) in place of $str
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_substr') or die("skip mb_substr() is not available in this build");
+function_exists('mb2_substr') or die("skip mb2_substr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_substr(string $str, int $start [, int $length [, string $encoding]])
+/* Prototype  : string mb2_substr(string $str, int $start [, int $length [, string $encoding]])
  * Description: Returns part of a string 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types as $str to mb_substr() to test behaviour
+ * Pass different data types as $str to mb2_substr() to test behaviour
  */
 
-echo "*** Testing mb_substr() : usage variations ***\n";
+echo "*** Testing mb2_substr() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $start = 0;
@@ -90,11 +90,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_substr()
+// loop through each element of $inputs to check the behavior of mb2_substr()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_substr($input, $start, $length));
+  var_dump( mb2_substr($input, $start, $length));
   $iterator++;
 };
 
@@ -102,7 +102,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_substr() : usage variations ***
+*** Testing mb2_substr() : usage variations ***
 
 -- Iteration 1 --
 string(1) "0"
@@ -175,7 +175,7 @@ string(0) ""
 
 -- Iteration 24 --
 
-Warning: mb_substr() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_substr() expects parameter 1 to be string, resource given in %s on line %d
 NULL
 Done
 

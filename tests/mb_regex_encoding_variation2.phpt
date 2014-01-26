@@ -1,13 +1,13 @@
 --TEST--
-Test mb_regex_encoding() function : usage variations - test different encodings
+Test mb2_regex_encoding() function : usage variations - test different encodings
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_regex_encoding') or die("skip mb_regex_encoding() is not available in this build");
+function_exists('mb2_regex_encoding') or die("skip mb2_regex_encoding() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_regex_encoding([string $encoding])
+/* Prototype  : string mb2_regex_encoding([string $encoding])
  * Description: Returns the current encoding for regex as a string. 
  * Source code: ext/mbstring/php_mbregex.c
  */
@@ -18,7 +18,7 @@ function_exists('mb_regex_encoding') or die("skip mb_regex_encoding() is not ava
  * This test is purely to see whether the function recognises the encoding.
  */
 
-echo "*** Testing mb_regex_encoding() : usage variations ***\n";
+echo "*** Testing mb2_regex_encoding() : usage variations ***\n";
 
 $encoding = array('UCS-4',			/*1*/
                   'UCS-4BE',
@@ -80,15 +80,15 @@ $encoding = array('UCS-4',			/*1*/
 $iterator = 1;
 foreach($encoding as $enc) {
 	echo "\n-- Iteration $iterator --\n";
-	var_dump(mb_regex_encoding());
-	var_dump(mb_regex_encoding($enc));
-	var_dump(mb_regex_encoding());
+	var_dump(mb2_regex_encoding());
+	var_dump(mb2_regex_encoding($enc));
+	var_dump(mb2_regex_encoding());
 	$iterator++;
 }
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_regex_encoding() : usage variations ***
+*** Testing mb2_regex_encoding() : usage variations ***
 
 -- Iteration 1 --
 string(%d) "%s"
@@ -98,7 +98,7 @@ string(5) "UCS-4"
 -- Iteration 2 --
 string(5) "UCS-4"
 
-Warning: mb_regex_encoding(): Unknown encoding "UCS-4BE" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UCS-4BE" in %s on line %d
 bool(false)
 string(5) "UCS-4"
 
@@ -110,21 +110,21 @@ string(7) "UCS-4LE"
 -- Iteration 4 --
 string(7) "UCS-4LE"
 
-Warning: mb_regex_encoding(): Unknown encoding "UCS-2" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UCS-2" in %s on line %d
 bool(false)
 string(7) "UCS-4LE"
 
 -- Iteration 5 --
 string(7) "UCS-4LE"
 
-Warning: mb_regex_encoding(): Unknown encoding "UCS-2BE" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UCS-2BE" in %s on line %d
 bool(false)
 string(7) "UCS-4LE"
 
 -- Iteration 6 --
 string(7) "UCS-4LE"
 
-Warning: mb_regex_encoding(): Unknown encoding "UCS-2LE" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UCS-2LE" in %s on line %d
 bool(false)
 string(7) "UCS-4LE"
 
@@ -161,14 +161,14 @@ string(8) "UTF-16LE"
 -- Iteration 13 --
 string(8) "UTF-16LE"
 
-Warning: mb_regex_encoding(): Unknown encoding "UTF-7" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UTF-7" in %s on line %d
 bool(false)
 string(8) "UTF-16LE"
 
 -- Iteration 14 --
 string(8) "UTF-16LE"
 
-Warning: mb_regex_encoding(): Unknown encoding "UTF7-IMAP" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UTF7-IMAP" in %s on line %d
 bool(false)
 string(8) "UTF-16LE"
 
@@ -205,14 +205,14 @@ string(4) "SJIS"
 -- Iteration 21 --
 string(4) "SJIS"
 
-Warning: mb_regex_encoding(): Unknown encoding "ISO-2022-JP" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "ISO-2022-JP" in %s on line %d
 bool(false)
 string(4) "SJIS"
 
 -- Iteration 22 --
 string(4) "SJIS"
 
-Warning: mb_regex_encoding(): Unknown encoding "JIS" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "JIS" in %s on line %d
 bool(false)
 string(4) "SJIS"
 
@@ -284,56 +284,56 @@ string(11) "ISO-8859-15"
 -- Iteration 36 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "byte2be" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "byte2be" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 37 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "byte2le" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "byte2le" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 38 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "byte4be" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "byte4be" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 39 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "byte4le" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "byte4le" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 40 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "BASE64" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "BASE64" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 41 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "HTML-ENTITIES" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "HTML-ENTITIES" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 42 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "7bit" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "7bit" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
 -- Iteration 43 --
 string(11) "ISO-8859-15"
 
-Warning: mb_regex_encoding(): Unknown encoding "8bit" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "8bit" in %s on line %d
 bool(false)
 string(11) "ISO-8859-15"
 
@@ -345,14 +345,14 @@ string(6) "EUC-CN"
 -- Iteration 45 --
 string(6) "EUC-CN"
 
-Warning: mb_regex_encoding(): Unknown encoding "CP936" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "CP936" in %s on line %d
 bool(false)
 string(6) "EUC-CN"
 
 -- Iteration 46 --
 string(6) "EUC-CN"
 
-Warning: mb_regex_encoding(): Unknown encoding "HZ" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "HZ" in %s on line %d
 bool(false)
 string(6) "EUC-CN"
 
@@ -364,7 +364,7 @@ string(6) "EUC-TW"
 -- Iteration 48 --
 string(6) "EUC-TW"
 
-Warning: mb_regex_encoding(): Unknown encoding "CP950" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "CP950" in %s on line %d
 bool(false)
 string(6) "EUC-TW"
 
@@ -381,35 +381,35 @@ string(6) "EUC-KR"
 -- Iteration 51 --
 string(6) "EUC-KR"
 
-Warning: mb_regex_encoding(): Unknown encoding "UHC" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "UHC" in %s on line %d
 bool(false)
 string(6) "EUC-KR"
 
 -- Iteration 52 --
 string(6) "EUC-KR"
 
-Warning: mb_regex_encoding(): Unknown encoding "ISO-2022-KR" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "ISO-2022-KR" in %s on line %d
 bool(false)
 string(6) "EUC-KR"
 
 -- Iteration 53 --
 string(6) "EUC-KR"
 
-Warning: mb_regex_encoding(): Unknown encoding "Windows-1251" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "Windows-1251" in %s on line %d
 bool(false)
 string(6) "EUC-KR"
 
 -- Iteration 54 --
 string(6) "EUC-KR"
 
-Warning: mb_regex_encoding(): Unknown encoding "Windows-1252" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "Windows-1252" in %s on line %d
 bool(false)
 string(6) "EUC-KR"
 
 -- Iteration 55 --
 string(6) "EUC-KR"
 
-Warning: mb_regex_encoding(): Unknown encoding "CP866" in %s on line %d
+Warning: mb2_regex_encoding(): Unknown encoding "CP866" in %s on line %d
 bool(false)
 string(6) "EUC-KR"
 

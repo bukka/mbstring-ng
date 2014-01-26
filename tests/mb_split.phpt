@@ -1,20 +1,20 @@
 --TEST--
-mb_split()
+mb2_split()
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip mbstring not available');
-function_exists('mb_split') or die("skip mb_split() is not available in this build");
+function_exists('mb2_split') or die("skip mb2_split() is not available in this build");
 ?>
 --INI--
 mbstring.func_overload=0
 --FILE--
 <?php
-	mb_regex_set_options( '' );
-	mb_regex_encoding( 'EUC-JP' );
+	mb2_regex_set_options( '' );
+	mb2_regex_encoding( 'EUC-JP' );
 
 	function verify_split( $spliton, $str, $count = 0 )
 	{
-		$result1 = mb_split( $spliton, $str, $count );
+		$result1 = mb2_split( $spliton, $str, $count );
 		$result2 = split( $spliton, $str, $count );
 		if ( $result1 == $result2 ) {
 			print "ok\n";
@@ -23,8 +23,8 @@ mbstring.func_overload=0
 		}	
 	}
 
-	var_dump( mb_split( b" ", b"a b c d e f g" )
-	          == mb_split( b"[[:space:]]", b"a\nb\tc\nd e f g" ) );
+	var_dump( mb2_split( b" ", b"a b c d e f g" )
+	          == mb2_split( b"[[:space:]]", b"a\nb\tc\nd e f g" ) );
 
 	for ( $i = 0; $i < 5; ++$i ) {
 		verify_split( b" ", b"a\tb\tc\td   e\tf g", $i );

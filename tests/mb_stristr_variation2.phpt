@@ -1,19 +1,19 @@
 --TEST--
-Test mb_stristr() function : usage variation - different types of needle.
+Test mb2_stristr() function : usage variation - different types of needle.
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_stristr') or die("skip mb_stristr() is not available in this build");
+function_exists('mb2_stristr') or die("skip mb2_stristr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_stristr(string haystack, string needle[, bool part[, string encoding]])
+/* Prototype  : string mb2_stristr(string haystack, string needle[, bool part[, string encoding]])
  * Description: Finds first occurrence of a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_stristr() : usage variation ***\n";
+echo "*** Testing mb2_stristr() : usage variation ***\n";
 
 // Define error handler
 function test_error_handler($err_no, $err_msg, $filename, $linenum, $vars) {
@@ -111,7 +111,7 @@ $inputs = array(
 
 foreach($inputs as $key =>$value) {
       echo "\n--$key--\n";
-      var_dump( mb_stristr($haystack, $value, $part, $encoding) );
+      var_dump( mb2_stristr($haystack, $value, $part, $encoding) );
 };
 
 fclose($fp);
@@ -119,7 +119,7 @@ fclose($fp);
 ?>
 ===DONE===
 --EXPECTF--
-*** Testing mb_stristr() : usage variation ***
+*** Testing mb2_stristr() : usage variation ***
 
 --int 0--
 bool(false)
@@ -149,68 +149,68 @@ bool(false)
 bool(false)
 
 --empty array--
-Error: 2 - mb_stristr() expects parameter 2 to be string, array given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, array given, %s(%d)
 bool(false)
 
 --int indexed array--
-Error: 2 - mb_stristr() expects parameter 2 to be string, array given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, array given, %s(%d)
 bool(false)
 
 --associative array--
-Error: 2 - mb_stristr() expects parameter 2 to be string, array given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, array given, %s(%d)
 bool(false)
 
 --nested arrays--
-Error: 2 - mb_stristr() expects parameter 2 to be string, array given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, array given, %s(%d)
 bool(false)
 
 --uppercase NULL--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --lowercase null--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --lowercase true--
 bool(false)
 
 --lowercase false--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --uppercase TRUE--
 bool(false)
 
 --uppercase FALSE--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --empty string DQ--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --empty string SQ--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --instance of classWithToString--
 bool(false)
 
 --instance of classWithoutToString--
-Error: 2 - mb_stristr() expects parameter 2 to be string, object given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, object given, %s(%d)
 bool(false)
 
 --undefined var--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --unset var--
-Error: 2 - mb_stristr(): Empty delimiter, %s(%d)
+Error: 2 - mb2_stristr(): Empty delimiter, %s(%d)
 bool(false)
 
 --resource--
-Error: 2 - mb_stristr() expects parameter 2 to be string, resource given, %s(%d)
+Error: 2 - mb2_stristr() expects parameter 2 to be string, resource given, %s(%d)
 bool(false)
 ===DONE===
 

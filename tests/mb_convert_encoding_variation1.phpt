@@ -1,26 +1,26 @@
 --TEST--
-Test mb_convert_encoding() function : usage variations - pass different data types as $to_encoding arg
+Test mb2_convert_encoding() function : usage variations - pass different data types as $to_encoding arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_convert_encoding') or die("skip mb_convert_encoding() is not available in this build");
+function_exists('mb2_convert_encoding') or die("skip mb2_convert_encoding() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_convert_encoding(string $str, string $to_encoding [, mixed $from_encoding])
+/* Prototype  : string mb2_convert_encoding(string $str, string $to_encoding [, mixed $from_encoding])
  * Description: Returns converted string in desired encoding 
  * Source code: ext/mbstring/mbstring.c
  */
 
 
 /*
- * Pass different data types to $to_encoding arg to test behaviour of mb_convert_encoding
+ * Pass different data types to $to_encoding arg to test behaviour of mb2_convert_encoding
  */
 
-echo "*** Testing mb_convert_encoding() : usage variations ***\n";
+echo "*** Testing mb2_convert_encoding() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
-mb_internal_encoding('utf-8');
+mb2_internal_encoding('utf-8');
 $sourcestring = b'hello, world';
 
 //get an unset variable
@@ -91,11 +91,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behaviour of mb_convert_encoding()
+// loop through each element of $inputs to check the behaviour of mb2_convert_encoding()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump(bin2hex( mb_convert_encoding($sourcestring, $input, 'ISO-8859-1') ));
+  var_dump(bin2hex( mb2_convert_encoding($sourcestring, $input, 'ISO-8859-1') ));
   $iterator++;
 };
 
@@ -104,51 +104,51 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_convert_encoding() : usage variations ***
+*** Testing mb2_convert_encoding() : usage variations ***
 
 -- Iteration 1 --
 
-Warning: mb_convert_encoding(): Unknown encoding "0" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "0" in %s on line %d
 string(0) ""
 
 -- Iteration 2 --
 
-Warning: mb_convert_encoding(): Unknown encoding "1" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "1" in %s on line %d
 string(0) ""
 
 -- Iteration 3 --
 
-Warning: mb_convert_encoding(): Unknown encoding "12345" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "12345" in %s on line %d
 string(0) ""
 
 -- Iteration 4 --
 
-Warning: mb_convert_encoding(): Unknown encoding "-2345" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "-2345" in %s on line %d
 string(0) ""
 
 -- Iteration 5 --
 
-Warning: mb_convert_encoding(): Unknown encoding "10.5" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "10.5" in %s on line %d
 string(0) ""
 
 -- Iteration 6 --
 
-Warning: mb_convert_encoding(): Unknown encoding "-10.5" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "-10.5" in %s on line %d
 string(0) ""
 
 -- Iteration 7 --
 
-Warning: mb_convert_encoding(): Unknown encoding "123456789000" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "123456789000" in %s on line %d
 string(0) ""
 
 -- Iteration 8 --
 
-Warning: mb_convert_encoding(): Unknown encoding "1.23456789E-9" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "1.23456789E-9" in %s on line %d
 string(0) ""
 
 -- Iteration 9 --
 
-Warning: mb_convert_encoding(): Unknown encoding "0.5" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "0.5" in %s on line %d
 string(0) ""
 
 -- Iteration 10 --
@@ -159,7 +159,7 @@ string(24) "68656c6c6f2c20776f726c64"
 
 -- Iteration 12 --
 
-Warning: mb_convert_encoding(): Unknown encoding "1" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "1" in %s on line %d
 string(0) ""
 
 -- Iteration 13 --
@@ -167,7 +167,7 @@ string(24) "68656c6c6f2c20776f726c64"
 
 -- Iteration 14 --
 
-Warning: mb_convert_encoding(): Unknown encoding "1" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "1" in %s on line %d
 string(0) ""
 
 -- Iteration 15 --
@@ -190,7 +190,7 @@ string(24) "68656c6c6f2c20776f726c64"
 
 -- Iteration 21 --
 
-Warning: mb_convert_encoding(): Unknown encoding "Class A object" in %s on line %d
+Warning: mb2_convert_encoding(): Unknown encoding "Class A object" in %s on line %d
 string(0) ""
 
 -- Iteration 22 --
@@ -201,7 +201,7 @@ string(24) "68656c6c6f2c20776f726c64"
 
 -- Iteration 24 --
 
-Warning: mb_convert_encoding() expects parameter 2 to be string, resource given in %s on line %d
+Warning: mb2_convert_encoding() expects parameter 2 to be string, resource given in %s on line %d
 string(0) ""
 Done
 

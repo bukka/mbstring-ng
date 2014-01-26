@@ -1,25 +1,25 @@
 --TEST--
-Test mb_stripos() function : basic functionality
+Test mb2_stripos() function : basic functionality
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_stripos') or die("skip mb_stripos() is not available in this build");
+function_exists('mb2_stripos') or die("skip mb2_stripos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_stripos(string haystack, string needle [, int offset [, string encoding]])
+/* Prototype  : int mb2_stripos(string haystack, string needle [, int offset [, string encoding]])
  * Description: Finds position of first occurrence of a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
 /*
- * Test basic functionality of mb_stripos with ASCII and multibyte characters
+ * Test basic functionality of mb2_stripos with ASCII and multibyte characters
  */
 
-echo "*** Testing mb_stripos() : basic functionality***\n";
+echo "*** Testing mb2_stripos() : basic functionality***\n";
 
-mb_internal_encoding('UTF-8');
+mb2_internal_encoding('UTF-8');
 
 //ascii strings
 $ascii_haystacks = array(
@@ -56,23 +56,23 @@ $greek_needles = array(
 echo "\n -- ASCII Strings --\n";
 foreach ($ascii_needles as $needle) {
    foreach ($ascii_haystacks as $haystack) {
-      var_dump(mb_stripos($haystack, $needle));      
-      var_dump(mb_stripos($haystack, $needle, 6));
+      var_dump(mb2_stripos($haystack, $needle));      
+      var_dump(mb2_stripos($haystack, $needle, 6));
    }
 }
 
 echo "\n -- Greek Strings --\n";
 foreach ($greek_needles as $needle) {
    foreach ($greek_haystacks as $haystack) {
-      var_dump(mb_stripos($haystack, $needle));
-      var_dump(mb_stripos($haystack, $needle, 4));         
+      var_dump(mb2_stripos($haystack, $needle));
+      var_dump(mb2_stripos($haystack, $needle, 4));         
    }
 }
 
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_stripos() : basic functionality***
+*** Testing mb2_stripos() : basic functionality***
 
  -- ASCII Strings --
 int(4)

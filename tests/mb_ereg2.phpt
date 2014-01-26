@@ -1,7 +1,7 @@
 --TEST--
-mb_ereg() returning matches
+mb2_ereg() returning matches
 --SKIPIF--
-<?php if (!function_exists("mb_ereg")) print "skip"; ?>
+<?php if (!function_exists("mb2_ereg")) print "skip"; ?>
 --FILE--
 <?php
 

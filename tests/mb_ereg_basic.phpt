@@ -1,24 +1,24 @@
 --TEST--
-Test mb_ereg() function : basic functionality 
+Test mb2_ereg() function : basic functionality 
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg') or die("skip mb_ereg() is not available in this build");
+function_exists('mb2_ereg') or die("skip mb2_ereg() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_ereg(string $pattern, string $string [, array $registers])
+/* Prototype  : int mb2_ereg(string $pattern, string $string [, array $registers])
  * Description: Regular expression match for multibyte string 
  * Source code: ext/mbstring/php_mbregex.c
  */
 
 /*
- * Test basic functionality of mb_ereg
+ * Test basic functionality of mb2_ereg
  */
 
-echo "*** Testing mb_ereg() : basic functionality ***\n";
+echo "*** Testing mb2_ereg() : basic functionality ***\n";
 
-if(mb_regex_encoding('utf-8') == true) {
+if(mb2_regex_encoding('utf-8') == true) {
 	echo "Regex encoding set to utf-8\n";
 } else {
 	echo "Could not set regex encoding to utf-8\n";
@@ -33,22 +33,22 @@ $regex_mb2 = base64_decode('5LiW55WM');
 
 echo "\n**-- ASCII String --**\n";
 echo "-- Without \$regs argument--\n";
-var_dump(mb_ereg($regex_ascii1, $string_ascii));
-var_dump(mb_ereg($regex_ascii2, $string_ascii));
+var_dump(mb2_ereg($regex_ascii1, $string_ascii));
+var_dump(mb2_ereg($regex_ascii2, $string_ascii));
 echo "--With \$regs argument --\n";
-var_dump(mb_ereg($regex_ascii1, $string_ascii, $regs_ascii1));
+var_dump(mb2_ereg($regex_ascii1, $string_ascii, $regs_ascii1));
 base64_encode_var_dump($regs_ascii1);
-var_dump(mb_ereg($regex_ascii2, $string_ascii, $regs_ascii2));
+var_dump(mb2_ereg($regex_ascii2, $string_ascii, $regs_ascii2));
 base64_encode_var_dump($regs_ascii2);
 
 echo "\n**-- Multibyte String --**\n";
 echo "-- Without \$regs argument --\n";
-var_dump(mb_ereg($regex_mb1, $string_mb));
-var_dump(mb_ereg($regex_mb2, $string_mb));
+var_dump(mb2_ereg($regex_mb1, $string_mb));
+var_dump(mb2_ereg($regex_mb2, $string_mb));
 echo "-- With \$regs argument --\n";
-var_dump(mb_ereg($regex_mb1, $string_mb, $regs_mb1));
+var_dump(mb2_ereg($regex_mb1, $string_mb, $regs_mb1));
 base64_encode_var_dump($regs_mb1);
-var_dump(mb_ereg($regex_mb2, $string_mb, $regs_mb2));
+var_dump(mb2_ereg($regex_mb2, $string_mb, $regs_mb2));
 var_dump($regs_mb2);
 
 echo "Done";
@@ -77,7 +77,7 @@ function base64_encode_var_dump($regs) {
 ?>
 
 --EXPECT--
-*** Testing mb_ereg() : basic functionality ***
+*** Testing mb2_ereg() : basic functionality ***
 Regex encoding set to utf-8
 
 **-- ASCII String --**

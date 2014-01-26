@@ -1,6 +1,6 @@
 --TEST--
 p8_only
-Title: Test mb_decode_mimeheader() function : usage variation 
+Title: Test mb2_decode_mimeheader() function : usage variation 
 Internal Reason: we output an extra warning message
 P8 only feature: Yes
 Author: D. Kelsey
@@ -8,17 +8,17 @@ Date: 01/09/2008
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_decode_mimeheader') or die("skip mb_decode_mimeheader() is not available in this build");
+function_exists('mb2_decode_mimeheader') or die("skip mb2_decode_mimeheader() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_decode_mimeheader(string string)
+/* Prototype  : string mb2_decode_mimeheader(string string)
  * Description: Decodes the MIME "encoded-word" in the string 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_decode_mimeheader() : usage variation ***\n";
+echo "*** Testing mb2_decode_mimeheader() : usage variation ***\n";
 
 // Define error handler
 function test_error_handler($err_no, $err_msg, $filename, $linenum, $vars) {
@@ -113,7 +113,7 @@ $inputs = array(
 
 foreach($inputs as $key =>$value) {
       echo "\n--$key--\n";
-      var_dump( mb_decode_mimeheader($value) );
+      var_dump( mb2_decode_mimeheader($value) );
 };
 
 fclose($fp);
@@ -121,7 +121,7 @@ fclose($fp);
 ?>
 ===DONE===
 --EXPECTF--
-*** Testing mb_decode_mimeheader() : usage variation ***
+*** Testing mb2_decode_mimeheader() : usage variation ***
 
 --int 0--
 string(1) "0"
@@ -151,19 +151,19 @@ string(13) "-123456789000"
 string(3) "0.5"
 
 --empty array--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
 NULL
 
 --int indexed array--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
 NULL
 
 --associative array--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
 NULL
 
 --nested arrays--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, array given, %s(%d)
 NULL
 
 --uppercase NULL--
@@ -194,7 +194,7 @@ string(0) ""
 string(14) "Class A object"
 
 --instance of classWithoutToString--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, object given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, object given, %s(%d)
 NULL
 
 --undefined var--
@@ -204,6 +204,6 @@ string(0) ""
 string(0) ""
 
 --resource--
-Error: 2 - mb_decode_mimeheader() expects parameter 1 to be string, resource given, %s(%d)
+Error: 2 - mb2_decode_mimeheader() expects parameter 1 to be string, resource given, %s(%d)
 NULL
 ===DONE===

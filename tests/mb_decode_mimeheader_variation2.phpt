@@ -1,20 +1,20 @@
 --TEST--
-Test mb_decode_mimeheader() function : variation 
+Test mb2_decode_mimeheader() function : variation 
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_decode_mimeheader') or die("skip mb_decode_mimeheader() is not available in this build");
+function_exists('mb2_decode_mimeheader') or die("skip mb2_decode_mimeheader() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_decode_mimeheader(string string)
+/* Prototype  : string mb2_decode_mimeheader(string string)
  * Description: Decodes the MIME "encoded-word" in the string 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_decode_mimeheader() : variation ***\n";
-mb_internal_encoding('utf-8');
+echo "*** Testing mb2_decode_mimeheader() : variation ***\n";
+mb2_internal_encoding('utf-8');
 
 //all the following are identical, we will convert to utf-8
 
@@ -35,13 +35,13 @@ $encoded_words = array(
  );
  
  foreach ($encoded_words as $word) {
-    var_dump(bin2hex(mb_decode_mimeheader($word)));
+    var_dump(bin2hex(mb2_decode_mimeheader($word)));
 }
 
 ?>
 ===DONE===
 --EXPECT--
-*** Testing mb_decode_mimeheader() : variation ***
+*** Testing mb2_decode_mimeheader() : variation ***
 string(106) "e697a5e69cace8aa9ee38386e382ade382b9e38388e381a7e38199e380823031323334efbc95efbc96efbc97efbc98efbc99e38082"
 string(106) "e697a5e69cace8aa9ee38386e382ade382b9e38388e381a7e38199e380823031323334efbc95efbc96efbc97efbc98efbc99e38082"
 string(106) "e697a5e69cace8aa9ee38386e382ade382b9e38388e381a7e38199e380823031323334efbc95efbc96efbc97efbc98efbc99e38082"

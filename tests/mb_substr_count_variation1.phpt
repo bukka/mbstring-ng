@@ -1,22 +1,22 @@
 --TEST--
-Test mb_substr_count() function : usage variations - Pass different data types as $haystack arg
+Test mb2_substr_count() function : usage variations - Pass different data types as $haystack arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_substr_count') or die("skip mb_substr_count() is not available in this build");
+function_exists('mb2_substr_count') or die("skip mb2_substr_count() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  :int mb_substr_count(string $haystack, string $needle [, string $encoding])
+/* Prototype  :int mb2_substr_count(string $haystack, string $needle [, string $encoding])
  * Description: Count the number of substring occurrences 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types as $haystack argument to mb_substr_count() to test behaviour
+ * Pass different data types as $haystack argument to mb2_substr_count() to test behaviour
  */
 
-echo "*** Testing mb_substr_count() : usage variations ***\n";
+echo "*** Testing mb2_substr_count() : usage variations ***\n";
 
 
 // Initialise function arguments not being substituted
@@ -90,11 +90,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_substr_count()
+// loop through each element of $inputs to check the behavior of mb2_substr_count()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_substr_count($input, $needle) );
+  var_dump( mb2_substr_count($input, $needle) );
   $iterator++;
 };
 
@@ -104,7 +104,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_substr_count() : usage variations ***
+*** Testing mb2_substr_count() : usage variations ***
 
 -- Iteration 1 --
 int(0)
@@ -177,6 +177,6 @@ int(0)
 
 -- Iteration 24 --
 
-Warning: mb_substr_count() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_substr_count() expects parameter 1 to be string, resource given in %s on line %d
 NULL
 Done

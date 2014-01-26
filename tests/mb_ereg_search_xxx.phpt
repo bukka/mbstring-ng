@@ -1,27 +1,27 @@
 --TEST--
-mb_ereg_search() stuff
+mb2_ereg_search() stuff
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip mbstring not available');
-function_exists('mb_ereg_search') or die("skip\n");
+function_exists('mb2_ereg_search') or die("skip\n");
 ?>
 --INI--
 output_handler=
 --FILE--
 <?php
-	mb_regex_set_options( '' );
+	mb2_regex_set_options( '' );
 
 	$encs = array( 'EUC-JP', 'Shift_JIS', 'SJIS', 'UTF-8' );
 
 	function test_search( $test_enc, $str, $look_for, $opt, $in_enc = 'EUC-JP' ) {
-		mb_regex_encoding( $test_enc );
-		$str = mb_convert_encoding( $str, $test_enc, $in_enc );
-		$look_for = mb_convert_encoding( $look_for, $test_enc, $in_enc );
-		mb_ereg_search_init( $str, $look_for, $opt );
-		while ( mb_ereg_search_pos() ) {
-			$regs = mb_ereg_search_getregs();
+		mb2_regex_encoding( $test_enc );
+		$str = mb2_convert_encoding( $str, $test_enc, $in_enc );
+		$look_for = mb2_convert_encoding( $look_for, $test_enc, $in_enc );
+		mb2_ereg_search_init( $str, $look_for, $opt );
+		while ( mb2_ereg_search_pos() ) {
+			$regs = mb2_ereg_search_getregs();
 			array_shift( $regs );
-			printf( "(%s) (%d) %s\n", $test_enc, mb_ereg_search_getpos(), mb_convert_encoding( ( is_array( $regs ) ? implode( '-', $regs ): '' ), $in_enc, $test_enc ) );
+			printf( "(%s) (%d) %s\n", $test_enc, mb2_ereg_search_getpos(), mb2_convert_encoding( ( is_array( $regs ) ? implode( '-', $regs ): '' ), $in_enc, $test_enc ) );
 		}
 	}	
 	function do_tests( $enc, $opt ) {

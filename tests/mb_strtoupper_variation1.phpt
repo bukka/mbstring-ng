@@ -1,23 +1,23 @@
 --TEST--
-Test mb_strtoupper() function : usage varitations - pass different data types as $sourcestring arg
+Test mb2_strtoupper() function : usage varitations - pass different data types as $sourcestring arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtoupper') or die("skip mb_strtoupper() is not available in this build");
+function_exists('mb2_strtoupper') or die("skip mb2_strtoupper() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtoupper(string $sourcestring [, string $encoding]
+/* Prototype  : string mb2_strtoupper(string $sourcestring [, string $encoding]
  * Description: Returns a uppercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
  * 
- * Pass different data types as $sourcestring argument to mb_strtoupper to test behaviour
+ * Pass different data types as $sourcestring argument to mb2_strtoupper to test behaviour
  */
 
-echo "*** Testing mb_strtoupper() : usage variations ***\n";
+echo "*** Testing mb2_strtoupper() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 
@@ -89,11 +89,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strtoupper()
+// loop through each element of $inputs to check the behavior of mb2_strtoupper()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strtoupper($input) );
+  var_dump( mb2_strtoupper($input) );
   $iterator++;
 };
 
@@ -103,7 +103,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strtoupper() : usage variations ***
+*** Testing mb2_strtoupper() : usage variations ***
 
 -- Iteration 1 --
 string(1) "0"
@@ -176,6 +176,6 @@ string(0) ""
 
 -- Iteration 24 --
 
-Warning: mb_strtoupper() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_strtoupper() expects parameter 1 to be string, resource given in %s on line %d
 NULL
 Done

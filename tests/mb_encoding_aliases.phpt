@@ -1,16 +1,16 @@
 --TEST--
-mb_encoding_aliases()
+mb2_encoding_aliases()
 --FILE--
 <?php
-mb_encoding_aliases();
-$list = mb_encoding_aliases("ASCII");
+mb2_encoding_aliases();
+$list = mb2_encoding_aliases("ASCII");
 sort($list);
 var_dump($list);
-var_dump(mb_encoding_aliases("7bit"));
-var_dump(mb_encoding_aliases("8bit"));
+var_dump(mb2_encoding_aliases("7bit"));
+var_dump(mb2_encoding_aliases("8bit"));
 ?>
 --EXPECTF--
-Warning: mb_encoding_aliases() expects exactly 1 parameter, 0 given in %s on line 2
+Warning: mb2_encoding_aliases() expects exactly 1 parameter, 0 given in %s on line 2
 array(10) {
   [0]=>
   string(14) "ANSI_X3.4-1968"

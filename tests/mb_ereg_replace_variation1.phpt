@@ -1,21 +1,21 @@
 --TEST--
-Test mb_ereg_replace() function : usage variations  - <type here specifics of this variation>
+Test mb2_ereg_replace() function : usage variations  - <type here specifics of this variation>
 --INI--
 error_reporting=E_ALL & ~E_NOTICE
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg_replace') or die("skip mb_ereg_replace() is not available in this build");
+function_exists('mb2_ereg_replace') or die("skip mb2_ereg_replace() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : proto string mb_ereg_replace(string pattern, string replacement, string string [, string option])
+/* Prototype  : proto string mb2_ereg_replace(string pattern, string replacement, string string [, string option])
  * Description: Replace regular expression for multibyte string 
  * Source code: ext/mbstring/php_mbregex.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_ereg_replace() : usage variations ***\n";
+echo "*** Testing mb2_ereg_replace() : usage variations ***\n";
 
 // Initialise function arguments not being substituted (if any)
 $replacement = 'string_val';
@@ -90,14 +90,14 @@ $inputs = array(
 $iterator = 1;
 foreach($inputs as $input) {
       echo "\n-- Iteration $iterator --\n";
-      var_dump( mb_ereg_replace($input, $replacement, $string, $option) );
+      var_dump( mb2_ereg_replace($input, $replacement, $string, $option) );
       $iterator++;
 };
 
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_ereg_replace() : usage variations ***
+*** Testing mb2_ereg_replace() : usage variations ***
 
 -- Iteration 1 --
 string(10) "string_val"

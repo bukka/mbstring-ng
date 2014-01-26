@@ -1,13 +1,13 @@
 --TEST--
-Test mb_substr() function : usage variations - test different encodings
+Test mb2_substr() function : usage variations - test different encodings
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_substr') or die("skip mb_substr() is not available in this build");
+function_exists('mb2_substr') or die("skip mb2_substr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_substr(string $str, int $start [, int $length [, string $encoding]])
+/* Prototype  : string mb2_substr(string $str, int $start [, int $length [, string $encoding]])
  * Description: Returns part of a string
  * Source code: ext/mbstring/mbstring.c
  */
@@ -18,7 +18,7 @@ function_exists('mb_substr') or die("skip mb_substr() is not available in this b
  * This test is purely to see whether the function recognises the encoding.
  */
 
-echo "*** Testing mb_substr() : usage variations ***\n";
+echo "*** Testing mb2_substr() : usage variations ***\n";
 
 $encoding = array('UCS-4',			/*1*/
                   'UCS-4BE',
@@ -88,14 +88,14 @@ foreach($encoding as $enc) {
 	echo "\n-- Iteration $iterator: $enc --\n";
 
 	echo "-- ASCII String --\n";
-	if (mb_substr($string_ascii, 1, 5, $enc)) {
+	if (mb2_substr($string_ascii, 1, 5, $enc)) {
 		echo "Encoding $enc recognised\n";
 	} else {
 		echo "Encoding $enc not recognised\n";
 	}
 
 	echo "-- Multibyte String --\n";
-	if (mb_substr($string_mb, 1, 5, $enc)) {
+	if (mb2_substr($string_mb, 1, 5, $enc)) {
 		echo "Encoding $enc recognised\n";
 	} else {
 		echo "Encoding $enc not recognised\n";
@@ -105,7 +105,7 @@ foreach($encoding as $enc) {
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_substr() : usage variations ***
+*** Testing mb2_substr() : usage variations ***
 
 -- Iteration 1: UCS-4 --
 -- ASCII String --

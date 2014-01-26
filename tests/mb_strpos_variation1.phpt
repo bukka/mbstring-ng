@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strpos() function : usage variations - pass different data types to $haystack arg
+Test mb2_strpos() function : usage variations - pass different data types to $haystack arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strpos') or die("skip mb_strpos() is not available in this build");
+function_exists('mb2_strpos') or die("skip mb2_strpos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strpos(string $haystack, string $needle [, int $offset [, string $encoding]])
+/* Prototype  : int mb2_strpos(string $haystack, string $needle [, int $offset [, string $encoding]])
  * Description: Find position of first occurrence of a string within another 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass mb_strpos different data types as $haystack arg to test behaviour
+ * Pass mb2_strpos different data types as $haystack arg to test behaviour
  */
 
-echo "*** Testing mb_strpos() : usage variations ***\n";
+echo "*** Testing mb2_strpos() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $needle = 'string_val';
@@ -91,11 +91,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strpos()
+// loop through each element of $inputs to check the behavior of mb2_strpos()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strpos($input, $needle, $offset, $encoding));
+  var_dump( mb2_strpos($input, $needle, $offset, $encoding));
   $iterator++;
 };
 
@@ -104,7 +104,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strpos() : usage variations ***
+*** Testing mb2_strpos() : usage variations ***
 
 -- Iteration 1 --
 bool(false)
@@ -177,6 +177,6 @@ bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_strpos() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_strpos() expects parameter 1 to be string, resource given in %s on line %d
 bool(false)
 Done

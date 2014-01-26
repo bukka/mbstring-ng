@@ -1,5 +1,5 @@
 --TEST--
-mb_convert_encoding()
+mb2_convert_encoding()
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
@@ -23,19 +23,19 @@ $euc_jp = '日本語テキストです。01234５６７８９。';
 // Note: For some reason it complains, results are differ. Not reserched.
 echo "== BASIC TEST ==\n";
 $s = $sjis;
-$s = mb_convert_encoding($s, 'EUC-JP', 'SJIS');
+$s = mb2_convert_encoding($s, 'EUC-JP', 'SJIS');
 print("EUC-JP: $s\n"); // EUC-JP
 
 $s = $jis;
-$s = mb_convert_encoding($s, 'EUC-JP', 'JIS');
+$s = mb2_convert_encoding($s, 'EUC-JP', 'JIS');
 print("EUC-JP: $s\n"); // EUC-JP
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'SJIS', 'EUC-JP');
+$s = mb2_convert_encoding($s, 'SJIS', 'EUC-JP');
 print("SJIS: ".base64_encode($s)."\n"); // SJIS
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'JIS', 'EUC-JP');
+$s = mb2_convert_encoding($s, 'JIS', 'EUC-JP');
 print("JIS: ".base64_encode($s)."\n"); // JIS
 
 
@@ -44,15 +44,15 @@ echo "== STRING ENCODING LIST ==\n";
 
 $a = 'JIS,UTF-8,EUC-JP,SJIS';
 $s = $jis;
-$s = mb_convert_encoding($s, 'EUC-JP', $a);
+$s = mb2_convert_encoding($s, 'EUC-JP', $a);
 print("EUC-JP: $s\n"); // EUC-JP
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'SJIS', $a);
+$s = mb2_convert_encoding($s, 'SJIS', $a);
 print("SJIS: ".base64_encode($s)."\n");  // SJIS
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'JIS', $a);
+$s = mb2_convert_encoding($s, 'JIS', $a);
 print("JIS: ".base64_encode($s)."\n"); // JIS
 
 
@@ -61,15 +61,15 @@ echo "== ARRAY ENCODING LIST ==\n";
 
 $a = array(0=>'JIS', 1=>'UTF-8', 2=>'EUC-JP', 3=>'SJIS');
 $s = $jis;
-$s = mb_convert_encoding($s, 'EUC-JP', $a);
+$s = mb2_convert_encoding($s, 'EUC-JP', $a);
 print("EUC-JP: $s\n"); // EUC-JP
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'SJIS', $a);
+$s = mb2_convert_encoding($s, 'SJIS', $a);
 print("SJIS: ".base64_encode($s)."\n");  // SJIS
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'JIS', $a);
+$s = mb2_convert_encoding($s, 'JIS', $a);
 print("JIS: ".base64_encode($s)."\n"); // JIS
 
 
@@ -77,33 +77,33 @@ print("JIS: ".base64_encode($s)."\n"); // JIS
 echo "== DETECT ORDER ==\n";
 
 $s = $jis;
-$s = mb_convert_encoding($s, 'EUC-JP', 'auto');
+$s = mb2_convert_encoding($s, 'EUC-JP', 'auto');
 print("EUC-JP: $s\n"); // EUC-JP
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'SJIS', 'auto');
+$s = mb2_convert_encoding($s, 'SJIS', 'auto');
 print("SJIS: ".base64_encode($s)."\n");  // SJIS
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'JIS', 'auto');
+$s = mb2_convert_encoding($s, 'JIS', 'auto');
 print("JIS: ".base64_encode($s)."\n"); // JIS
 
 
 // Invalid(?) Parameters
 echo "== INVALID PARAMETER ==\n";
 
-$s = mb_convert_encoding(1234, 'EUC-JP');
+$s = mb2_convert_encoding(1234, 'EUC-JP');
 print("INT: $s\n"); // EUC-JP
 
-$s = mb_convert_encoding('', 'EUC-JP');
+$s = mb2_convert_encoding('', 'EUC-JP');
 print("EUC-JP: $s\n");  // SJIS
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s, 'BAD');
+$s = mb2_convert_encoding($s, 'BAD');
 print("BAD: $s\n"); // BAD
 
 $s = $euc_jp;
-$s = mb_convert_encoding($s);
+$s = mb2_convert_encoding($s);
 print("MP: $s\n"); // Missing parameter
 
 

@@ -1,30 +1,30 @@
 --TEST--
-Test mb_strtolower() function : usage variations - pass mixed ASCII and non-ASCII strings
+Test mb2_strtolower() function : usage variations - pass mixed ASCII and non-ASCII strings
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtolower') or die("skip mb_strtolower() is not available in this build");
+function_exists('mb2_strtolower') or die("skip mb2_strtolower() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtolower(string $sourcestring [, string $encoding])
+/* Prototype  : string mb2_strtolower(string $sourcestring [, string $encoding])
  * Description: Returns a lowercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass a Japanese string and a mixed Japanese and ASCII string to mb_strtolower
+ * Pass a Japanese string and a mixed Japanese and ASCII string to mb2_strtolower
  * to check correct conversion is occuring (Japanese characters should not be converted).
  */
 
-echo "*** Testing mb_strtolower() : usage variations ***\n";
+echo "*** Testing mb2_strtolower() : usage variations ***\n";
 
 $string_mixed = base64_decode('5pel5pys6Kqe44OG44Kt44K544OI44Gn44GZ44CCUEhQLiAwMTIzNO+8le+8lu+8l++8mO+8meOAgg==');
 $string_mixed_lower = base64_decode('5pel5pys6Kqe44OG44Kt44K544OI44Gn44GZ44CCcGhwLiAwMTIzNO+8le+8lu+8l++8mO+8meOAgg==');
 $string_all_mb = base64_decode('5pel5pys6Kqe44OG44Kt44K544OI44Gn44GZ44CC');
 
 echo "\n-- Mixed string (mulitbyte and ASCII characters) --\n";
-$a = mb_strtolower($string_mixed, 'UTF-8');
+$a = mb2_strtolower($string_mixed, 'UTF-8');
 var_dump(base64_encode($a));
 if ($a == $string_mixed_lower) {
 	echo "Correctly Converted\n";
@@ -33,7 +33,7 @@ if ($a == $string_mixed_lower) {
 }
 
 echo "\n-- Multibyte Only String--\n";
-$b = mb_strtolower($string_all_mb, 'UTF-8');
+$b = mb2_strtolower($string_all_mb, 'UTF-8');
 var_dump(base64_encode($b));
 if ($b == $string_all_mb) { // Japanese characters only - should not be any conversion
 	echo "Correctly Converted\n";
@@ -45,7 +45,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strtolower() : usage variations ***
+*** Testing mb2_strtolower() : usage variations ***
 
 -- Mixed string (mulitbyte and ASCII characters) --
 string(80) "5pel5pys6Kqe44OG44Kt44K544OI44Gn44GZ44CCcGhwLiAwMTIzNO+8le+8lu+8l++8mO+8meOAgg=="

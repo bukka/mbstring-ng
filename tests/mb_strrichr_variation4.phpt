@@ -1,19 +1,19 @@
 --TEST--
-Test mb_strrichr() function : usage variation - different encoding types
+Test mb2_strrichr() function : usage variation - different encoding types
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strrichr') or die("skip mb_strrichr() is not available in this build");
+function_exists('mb2_strrichr') or die("skip mb2_strrichr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strrichr(string haystack, string needle[, bool part[, string encoding]])
+/* Prototype  : string mb2_strrichr(string haystack, string needle[, bool part[, string encoding]])
  * Description: Finds the last occurrence of a character in a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_strrichr() : usage variation ***\n";
+echo "*** Testing mb2_strrichr() : usage variation ***\n";
 
 // Define error handler
 function test_error_handler($err_no, $err_msg, $filename, $linenum, $vars) {
@@ -111,7 +111,7 @@ $inputs = array(
 
 foreach($inputs as $key =>$value) {
       echo "\n--$key--\n";
-      var_dump( mb_strrichr($haystack, $needle, $part, $value) );
+      var_dump( mb2_strrichr($haystack, $needle, $part, $value) );
 };
 
 fclose($fp);
@@ -119,109 +119,109 @@ fclose($fp);
 ?>
 ===DONE===
 --EXPECTF--
-*** Testing mb_strrichr() : usage variation ***
+*** Testing mb2_strrichr() : usage variation ***
 
 --int 0--
-Error: 2 - mb_strrichr(): Unknown encoding "0", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "0", %s(%d)
 bool(false)
 
 --int 1--
-Error: 2 - mb_strrichr(): Unknown encoding "1", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "1", %s(%d)
 bool(false)
 
 --int 12345--
-Error: 2 - mb_strrichr(): Unknown encoding "12345", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "12345", %s(%d)
 bool(false)
 
 --int -12345--
-Error: 2 - mb_strrichr(): Unknown encoding "-2345", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "-2345", %s(%d)
 bool(false)
 
 --float 10.5--
-Error: 2 - mb_strrichr(): Unknown encoding "10.5", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "10.5", %s(%d)
 bool(false)
 
 --float -10.5--
-Error: 2 - mb_strrichr(): Unknown encoding "-10.5", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "-10.5", %s(%d)
 bool(false)
 
 --float 12.3456789000e10--
-Error: 2 - mb_strrichr(): Unknown encoding "123456789000", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "123456789000", %s(%d)
 bool(false)
 
 --float -12.3456789000e10--
-Error: 2 - mb_strrichr(): Unknown encoding "-123456789000", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "-123456789000", %s(%d)
 bool(false)
 
 --float .5--
-Error: 2 - mb_strrichr(): Unknown encoding "0.5", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "0.5", %s(%d)
 bool(false)
 
 --empty array--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, array given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, array given, %s(%d)
 bool(false)
 
 --int indexed array--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, array given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, array given, %s(%d)
 bool(false)
 
 --associative array--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, array given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, array given, %s(%d)
 bool(false)
 
 --nested arrays--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, array given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, array given, %s(%d)
 bool(false)
 
 --uppercase NULL--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --lowercase null--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --lowercase true--
-Error: 2 - mb_strrichr(): Unknown encoding "1", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "1", %s(%d)
 bool(false)
 
 --lowercase false--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --uppercase TRUE--
-Error: 2 - mb_strrichr(): Unknown encoding "1", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "1", %s(%d)
 bool(false)
 
 --uppercase FALSE--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --empty string DQ--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --empty string SQ--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --instance of classWithToString--
-Error: 2 - mb_strrichr(): Unknown encoding "invalid", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "invalid", %s(%d)
 bool(false)
 
 --instance of classWithoutToString--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, object given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, object given, %s(%d)
 bool(false)
 
 --undefined var--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --unset var--
-Error: 2 - mb_strrichr(): Unknown encoding "", %s(%d)
+Error: 2 - mb2_strrichr(): Unknown encoding "", %s(%d)
 bool(false)
 
 --resource--
-Error: 2 - mb_strrichr() expects parameter 4 to be string, resource given, %s(%d)
+Error: 2 - mb2_strrichr() expects parameter 4 to be string, resource given, %s(%d)
 bool(false)
 ===DONE===

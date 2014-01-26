@@ -1,5 +1,5 @@
 --TEST--
-Bug #28220 (mb_strwidth() returns wrong width values for some Hangul characters)
+Bug #28220 (mb2_strwidth() returns wrong width values for some Hangul characters)
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --FILE--
@@ -13,7 +13,7 @@ $coderange = array(
 foreach ($coderange as $r) {
 	$ng = 0;
 	foreach ($r as $c) {
-		if (mb_strwidth(pack('N1', $c), 'UCS-4BE') != 2) {
+		if (mb2_strwidth(pack('N1', $c), 'UCS-4BE') != 2) {
 			$ng++;
 		}
 	}

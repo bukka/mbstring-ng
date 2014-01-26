@@ -1,19 +1,19 @@
 --TEST--
-Test mb_strpos() function : mb_strpos bounds check is byte count rather than a character count
+Test mb2_strpos() function : mb2_strpos bounds check is byte count rather than a character count
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strpos') or die("skip mb_strpos() is not available in this build");
+function_exists('mb2_strpos') or die("skip mb2_strpos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strpos(string $haystack, string $needle [, int $offset [, string $encoding]])
+/* Prototype  : int mb2_strpos(string $haystack, string $needle [, int $offset [, string $encoding]])
  * Description: Find position of first occurrence of a string within another 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * mb_strpos bounds check is byte count rather than a character count:
+ * mb2_strpos bounds check is byte count rather than a character count:
  * The multibyte string should be returning the same results as the ASCII string.
  * Multibyte string was not returning error message until offset was passed the
  * byte count of the string. Should return error message when passed character count.
@@ -26,9 +26,9 @@ $needle = base64_decode('44CC');
 foreach($offsets as $i) {
 	echo "\n-- Offset is $i --\n";
 	echo "--Multibyte String:--\n";
-	var_dump( mb_strpos($string_mb, $needle, $i, 'UTF-8') );
+	var_dump( mb2_strpos($string_mb, $needle, $i, 'UTF-8') );
 	echo"--ASCII String:--\n";
-	var_dump(mb_strpos(b'This is na English ta', b'a', $i));
+	var_dump(mb2_strpos(b'This is na English ta', b'a', $i));
 }
 ?>
 --EXPECTF--
@@ -47,29 +47,29 @@ bool(false)
 -- Offset is 22 --
 --Multibyte String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)
 --ASCII String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)
 
 -- Offset is 53 --
 --Multibyte String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)
 --ASCII String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)
 
 -- Offset is 54 --
 --Multibyte String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)
 --ASCII String:--
 
-Warning: mb_strpos(): Offset not contained in string in %s on line %d
+Warning: mb2_strpos(): Offset not contained in string in %s on line %d
 bool(false)

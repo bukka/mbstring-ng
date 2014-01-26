@@ -1,9 +1,9 @@
 --TEST--
-mb_send_mail() test 1 (lang=neutral)
+mb2_send_mail() test 1 (lang=neutral)
 --SKIPIF--
 <?php
-if (!function_exists("mb_send_mail") || !mb_language("neutral")) {
-	die("skip mb_send_mail() not available");
+if (!function_exists("mb2_send_mail") || !mb2_language("neutral")) {
+	die("skip mb2_send_mail() not available");
 }
 ?>
 --INI--
@@ -13,12 +13,12 @@ sendmail_path=/bin/cat
 $to = 'example@example.com';
 
 /* default setting */
-mb_send_mail($to, mb_language(), "test");
+mb2_send_mail($to, mb2_language(), "test");
 
 /* neutral (UTF-8) */
-if (mb_language("neutral")) {
-	mb_internal_encoding("none");
-	mb_send_mail($to, "test ".mb_language(), "test");
+if (mb2_language("neutral")) {
+	mb2_internal_encoding("none");
+	mb2_send_mail($to, "test ".mb2_language(), "test");
 }
 ?>
 --EXPECTF--

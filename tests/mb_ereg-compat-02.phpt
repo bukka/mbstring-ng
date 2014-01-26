@@ -1,15 +1,15 @@
 --TEST--
-mb_ereg() compat test 2
+mb2_ereg() compat test 2
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg') or die("skip mb_ereg() is not available in this build");
+function_exists('mb2_ereg') or die("skip mb2_ereg() is not available in this build");
 ?>
 --FILE--
 <?php
 /* (counterpart: ext/standard/tests/reg/005.phpt) */
   $a="This is a nice and simple string";
-  echo mb_ereg(".*(is).*(is).*",$a,$registers);
+  echo mb2_ereg(".*(is).*(is).*",$a,$registers);
   echo "\n";
   echo $registers[0];
   echo "\n";

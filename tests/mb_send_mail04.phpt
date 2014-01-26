@@ -1,9 +1,9 @@
 --TEST--
-mb_send_mail() test 4 (lang=German)
+mb2_send_mail() test 4 (lang=German)
 --SKIPIF--
 <?php
-if (!function_exists("mb_send_mail") || !mb_language("german")) {
-	die("skip mb_send_mail() not available");
+if (!function_exists("mb2_send_mail") || !mb2_language("german")) {
+	die("skip mb2_send_mail() not available");
 }
 ?>
 --INI--
@@ -13,12 +13,12 @@ sendmail_path=/bin/cat
 $to = 'example@example.com';
 
 /* default setting */
-mb_send_mail($to, mb_language(), "test");
+mb2_send_mail($to, mb2_language(), "test");
 
 /* German (iso-8859-15) */
-if (mb_language("german")) {
-	mb_internal_encoding("ISO-8859-15");
-	mb_send_mail($to, "Pr"."\xfc"."fung ".mb_language(), "Pr"."\xfc"."fung");
+if (mb2_language("german")) {
+	mb2_internal_encoding("ISO-8859-15");
+	mb2_send_mail($to, "Pr"."\xfc"."fung ".mb2_language(), "Pr"."\xfc"."fung");
 }
 ?>
 --EXPECTF--

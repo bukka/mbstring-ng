@@ -1,12 +1,12 @@
 --TEST--
-Bug #26639 (mb_convert_variables() clutters variables beyond the references)
+Bug #26639 (mb2_convert_variables() clutters variables beyond the references)
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --FILE--
 <?php
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = $a;
-mb_convert_variables("EUC-JP", "Shift_JIS", $b);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $b);
 debug_zval_dump($a);
 debug_zval_dump($b);
 unset($a);
@@ -14,7 +14,7 @@ unset($b);
 
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = &$a;
-mb_convert_variables("EUC-JP", "Shift_JIS", $b);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $b);
 debug_zval_dump($a);
 debug_zval_dump($b);
 unset($a);
@@ -23,7 +23,7 @@ unset($b);
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = array($a);
 $c = $b;
-mb_convert_variables("EUC-JP", "Shift_JIS", $c);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $c);
 debug_zval_dump($b);
 debug_zval_dump($c);
 unset($a);
@@ -33,7 +33,7 @@ unset($c);
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = array(&$a);
 $c = $b;
-mb_convert_variables("EUC-JP", "Shift_JIS", $c);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $c);
 debug_zval_dump($b);
 debug_zval_dump($c);
 unset($a);
@@ -43,7 +43,7 @@ unset($c);
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = array($a);
 $c = &$b;
-mb_convert_variables("EUC-JP", "Shift_JIS", $c);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $c);
 debug_zval_dump($b);
 debug_zval_dump($c);
 unset($a);
@@ -53,7 +53,7 @@ unset($c);
 $a = "‚ ‚¢‚¤‚¦‚¨";
 $b = array(&$a);
 $c = &$b;
-mb_convert_variables("EUC-JP", "Shift_JIS", $c);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $c);
 debug_zval_dump($b);
 debug_zval_dump($c);
 unset($a);
@@ -63,7 +63,7 @@ unset($c);
 $a = array(array("‚ ‚¢‚¤‚¦‚¨"));
 $b = $a;
 $c = $b;
-mb_convert_variables("EUC-JP", "Shift_JIS", $c);
+mb2_convert_variables("EUC-JP", "Shift_JIS", $c);
 debug_zval_dump($b);
 debug_zval_dump($c);
 unset($a);

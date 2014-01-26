@@ -1,24 +1,24 @@
 --TEST--
-Test mb_substr() function : usage variations - pass different integers to $length arg
+Test mb2_substr() function : usage variations - pass different integers to $length arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_substr') or die("skip mb_substr() is not available in this build");
+function_exists('mb2_substr') or die("skip mb2_substr() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_substr(string $str, int $start [, int $length [, string $encoding]])
+/* Prototype  : string mb2_substr(string $str, int $start [, int $length [, string $encoding]])
  * Description: Returns part of a string 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test how mb_substr() behaves when passed a range of integers as $length argument
+ * Test how mb2_substr() behaves when passed a range of integers as $length argument
  */
 
-echo "*** Testing mb_substr() : usage variations ***\n";
+echo "*** Testing mb2_substr() : usage variations ***\n";
 
-mb_internal_encoding('UTF-8');
+mb2_internal_encoding('UTF-8');
 
 $string_ascii = b'+Is an English string'; //21 chars
 
@@ -36,7 +36,7 @@ for ($i = -60; $i <= 60; $i += 10) {
 	}
 	echo "\n**-- Offset is: $i --**\n";
 	echo "-- ASCII String --\n";
-	$a = mb_substr($string_ascii, 1, $i);
+	$a = mb2_substr($string_ascii, 1, $i);
 	if ($a !== false) {
 	   var_dump(bin2hex($a));
 	}
@@ -44,8 +44,8 @@ for ($i = -60; $i <= 60; $i += 10) {
 	   var_dump($a);
 	}			
 	echo "--Multibyte String --\n";
-	$b = mb_substr($string_mb, 1, $i, 'UTF-8');
-	if (strlen($a) == mb_strlen($b, 'UTF-8')) { // should return same length
+	$b = mb2_substr($string_mb, 1, $i, 'UTF-8');
+	if (strlen($a) == mb2_strlen($b, 'UTF-8')) { // should return same length
 		var_dump(bin2hex($b));
 	} else {
 		echo "Difference in length of ASCII string and multibyte string\n";
@@ -56,7 +56,7 @@ for ($i = -60; $i <= 60; $i += 10) {
 echo "Done";
 ?>
 --EXPECT--
-*** Testing mb_substr() : usage variations ***
+*** Testing mb2_substr() : usage variations ***
 
 **-- Offset is: -60 --**
 -- ASCII String --

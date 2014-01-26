@@ -1,5 +1,5 @@
 --TEST--
-mb_parse_str() test 2
+mb2_parse_str() test 2
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
@@ -16,12 +16,12 @@ function test($query) {
 	$foo = '';
 	$bar = '';
 	$fubar = '';
-	mb_parse_str($query, $array);
+	mb2_parse_str($query, $array);
 	var_dump($array);
 	var_dump($foo);
 	var_dump($bar);
 	var_dump($fubar);
-	mb_parse_str($query);
+	mb2_parse_str($query);
 	var_dump($foo);
 	var_dump($bar);
 	var_dump($fubar);

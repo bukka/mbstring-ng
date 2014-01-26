@@ -1,19 +1,19 @@
 --TEST--
-Test mb_split() function : usage variations  - different parameter types for limit
+Test mb2_split() function : usage variations  - different parameter types for limit
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_split') or die("skip mb_split() is not available in this build");
+function_exists('mb2_split') or die("skip mb2_split() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : proto array mb_split(string pattern, string string [, int limit])
+/* Prototype  : proto array mb2_split(string pattern, string string [, int limit])
  * Description: split multibyte string into array by regular expression 
  * Source code: ext/mbstring/php_mbregex.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_split() : usage variations ***\n";
+echo "*** Testing mb2_split() : usage variations ***\n";
 
 // Initialise function arguments not being substituted (if any)
 $pattern = '[a-z]';
@@ -92,7 +92,7 @@ $inputs = array(
 $iterator = 1;
 foreach($inputs as $input) {
       echo "\n-- Iteration $iterator --\n";
-      var_dump( mb_split($pattern, $string, $input) );
+      var_dump( mb2_split($pattern, $string, $input) );
       $iterator++;
 };
 
@@ -100,7 +100,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_split() : usage variations ***
+*** Testing mb2_split() : usage variations ***
 
 -- Iteration 1 --
 array(1) {
@@ -284,32 +284,32 @@ array(1) {
 
 -- Iteration 16 --
 
-Warning: mb_split() expects parameter 3 to be long, string given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, string given in %s on line %d
 bool(false)
 
 -- Iteration 17 --
 
-Warning: mb_split() expects parameter 3 to be long, string given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, string given in %s on line %d
 bool(false)
 
 -- Iteration 18 --
 
-Warning: mb_split() expects parameter 3 to be long, string given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, string given in %s on line %d
 bool(false)
 
 -- Iteration 19 --
 
-Warning: mb_split() expects parameter 3 to be long, string given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, string given in %s on line %d
 bool(false)
 
 -- Iteration 20 --
 
-Warning: mb_split() expects parameter 3 to be long, string given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, string given in %s on line %d
 bool(false)
 
 -- Iteration 21 --
 
-Warning: mb_split() expects parameter 3 to be long, object given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, object given in %s on line %d
 bool(false)
 
 -- Iteration 22 --
@@ -326,6 +326,6 @@ array(1) {
 
 -- Iteration 24 --
 
-Warning: mb_split() expects parameter 3 to be long, resource given in %s on line %d
+Warning: mb2_split() expects parameter 3 to be long, resource given in %s on line %d
 bool(false)
 Done

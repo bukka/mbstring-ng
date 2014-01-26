@@ -1,11 +1,11 @@
 --TEST--
-mb_send_mail() test 5 (lang=Simplified Chinese)
+mb2_send_mail() test 5 (lang=Simplified Chinese)
 --SKIPIF--
 <?php
-if (!function_exists("mb_send_mail") || !mb_language("Simplified Chinese")) {
-	die("skip mb_send_mail() not available");
+if (!function_exists("mb2_send_mail") || !mb2_language("Simplified Chinese")) {
+	die("skip mb2_send_mail() not available");
 }
-if (!@mb_internal_encoding('GB2312')) {
+if (!@mb2_internal_encoding('GB2312')) {
 	die("skip GB2312 encoding is not available on this platform");
 }
 ?>
@@ -16,12 +16,12 @@ sendmail_path=/bin/cat
 $to = 'example@example.com';
 
 /* default setting */
-mb_send_mail($to, mb_language(), "test");
+mb2_send_mail($to, mb2_language(), "test");
 
 /* Simplified Chinese (HK-GB-2312) */
-if (mb_language("simplified chinese")) {
-	mb_internal_encoding('GB2312');
-	mb_send_mail($to, "测验 ".mb_language(), "测验");
+if (mb2_language("simplified chinese")) {
+	mb2_internal_encoding('GB2312');
+	mb2_send_mail($to, "测验 ".mb2_language(), "测验");
 }
 ?>
 --EXPECTF--

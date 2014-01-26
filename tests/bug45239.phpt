@@ -10,9 +10,9 @@ extension_loaded('mbstring') or die('skip');
 ?>
 --FILE--
 <?php
-mb_internal_encoding("utf-8");
-mb_parse_str("a=%fc", $dummy);
-var_dump(mb_http_input());
+mb2_internal_encoding("utf-8");
+mb2_parse_str("a=%fc", $dummy);
+var_dump(mb2_http_input());
 ?>
 --EXPECT--
 string(5) "UTF-8"

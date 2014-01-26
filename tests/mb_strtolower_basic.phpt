@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strtolower() function : basic functionality
+Test mb2_strtolower() function : basic functionality
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtolower') or die("skip mb_strtolower() is not available in this build");
+function_exists('mb2_strtolower') or die("skip mb2_strtolower() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtolower(string $sourcestring [, string $encoding])
+/* Prototype  : string mb2_strtolower(string $sourcestring [, string $encoding])
  * Description: Returns a lowercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test basic functionality of mb_strtolower
+ * Test basic functionality of mb2_strtolower
  */
 
-echo "*** Testing mb_strtolower() : basic functionality***\n";
+echo "*** Testing mb2_strtolower() : basic functionality***\n";
 
 $ascii_lower = 'abcdefghijklmnopqrstuvwxyz';
 $ascii_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -24,7 +24,7 @@ $greek_lower = base64_decode('zrHOss6zzrTOtc62zrfOuM65zrrOu868zr3Ovs6/z4DPgc+Dz4
 $greek_upper = base64_decode('zpHOks6TzpTOlc6WzpfOmM6ZzprOm86czp3Ons6fzqDOoc6jzqTOpc6mzqfOqM6p');
 
 echo "\n-- ASCII String --\n";
-$ascii = mb_strtolower($ascii_upper);
+$ascii = mb2_strtolower($ascii_upper);
 var_dump($ascii);
 
 if($ascii == $ascii_lower) {
@@ -34,7 +34,7 @@ if($ascii == $ascii_lower) {
 }
 
 echo "\n-- Multibyte String --\n";
-$mb = mb_strtolower($greek_upper, 'UTF-8');
+$mb = mb2_strtolower($greek_upper, 'UTF-8');
 var_dump(base64_encode($mb));
 
 if ($mb == $greek_lower) {
@@ -46,7 +46,7 @@ if ($mb == $greek_lower) {
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strtolower() : basic functionality***
+*** Testing mb2_strtolower() : basic functionality***
 
 -- ASCII String --
 string(26) "abcdefghijklmnopqrstuvwxyz"

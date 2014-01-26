@@ -1,5 +1,5 @@
 --TEST--
-mb_strlen()
+mb2_strlen()
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
@@ -13,7 +13,7 @@ ini_set('include_path', dirname(__FILE__));
 include_once('common.inc');
 
 // restore detect_order to 'auto'
-mb_detect_order('auto');
+mb2_detect_order('auto');
 
 // Test string
 $euc_jp = '0123この文字列は日本語です。EUC-JPを使っています。0123日本語は面倒臭い。';
@@ -21,36 +21,36 @@ $ascii  = 'abcdefghijklmnopqrstuvwxyz;]=#0123456789';
 
 // ASCII
 echo "== ASCII ==\n";
-print  mb_strlen($ascii,'ASCII') . "\n";
+print  mb2_strlen($ascii,'ASCII') . "\n";
 print  strlen($ascii) . "\n";
 
 // EUC-JP
 echo "== EUC-JP ==\n";
-print  mb_strlen($euc_jp,'EUC-JP') . "\n";
-mb_internal_encoding('EUC-JP') or print("mb_internal_encoding() failed\n");
+print  mb2_strlen($euc_jp,'EUC-JP') . "\n";
+mb2_internal_encoding('EUC-JP') or print("mb2_internal_encoding() failed\n");
 print  strlen($euc_jp) . "\n";
 
 // SJIS
 echo "== SJIS ==\n";
-$sjis = mb_convert_encoding($euc_jp, 'SJIS','EUC-JP');
-print  mb_strlen($sjis,'SJIS') . "\n";
-mb_internal_encoding('SJIS') or print("mb_internal_encoding() failed\n");
+$sjis = mb2_convert_encoding($euc_jp, 'SJIS','EUC-JP');
+print  mb2_strlen($sjis,'SJIS') . "\n";
+mb2_internal_encoding('SJIS') or print("mb2_internal_encoding() failed\n");
 print  strlen($sjis) . "\n";
 
 // JIS
 // Note: either convert_encoding or strlen has problem
 echo "== JIS ==\n";
-$jis = mb_convert_encoding($euc_jp, 'JIS','EUC-JP');
-print  mb_strlen($jis,'JIS') . "\n";
-mb_internal_encoding('JIS')  or print("mb_internal_encoding() failed\n");
+$jis = mb2_convert_encoding($euc_jp, 'JIS','EUC-JP');
+print  mb2_strlen($jis,'JIS') . "\n";
+mb2_internal_encoding('JIS')  or print("mb2_internal_encoding() failed\n");
 print  strlen($jis) . "\n"; 
 
 // UTF-8
 // Note: either convert_encoding or strlen has problem
 echo "== UTF-8 ==\n";
-$utf8 = mb_convert_encoding($euc_jp, 'UTF-8','EUC-JP');
-print  mb_strlen($utf8,'UTF-8') . "\n";
-mb_internal_encoding('UTF-8')  or print("mb_internal_encoding() failed\n");
+$utf8 = mb2_convert_encoding($euc_jp, 'UTF-8','EUC-JP');
+print  mb2_strlen($utf8,'UTF-8') . "\n";
+mb2_internal_encoding('UTF-8')  or print("mb2_internal_encoding() failed\n");
 print  strlen($utf8) . "\n";  
 
 
@@ -65,8 +65,8 @@ echo $r."\n";
 $r = strlen($t_obj);
 echo $r."\n";
 // Wrong encoding
-mb_internal_encoding('EUC-JP');
-$r = mb_strlen($euc_jp, 'BAD_NAME');
+mb2_internal_encoding('EUC-JP');
+$r = mb2_strlen($euc_jp, 'BAD_NAME');
 echo $r."\n";
 
 

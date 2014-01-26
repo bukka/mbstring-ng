@@ -1,5 +1,5 @@
 --TEST--
-mb_http_input() 
+mb2_http_input() 
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip mbstring not available');
@@ -25,7 +25,7 @@ echo $_POST['a']."\n";
 echo $_GET['b']."\n";
 
 // Get encoding
-$enc = mb_http_input('P');
+$enc = mb2_http_input('P');
 
 // check
 if (empty($ini)) {

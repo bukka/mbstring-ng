@@ -1,19 +1,19 @@
 --TEST--
-Test mb_strrpos() function : mb_strrpos offset is byte count for negative values
+Test mb2_strrpos() function : mb2_strrpos offset is byte count for negative values
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strrpos') or die("skip mb_strrpos() is not available in this build");
+function_exists('mb2_strrpos') or die("skip mb2_strrpos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
+/* Prototype  : int mb2_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
  * Description: Find position of last occurrence of a string within another 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test that mb_strrpos offset is byte count for negative values (should be character count)
+ * Test that mb2_strrpos offset is byte count for negative values (should be character count)
  */
 
 $offsets = array(-25, -24, -13, -12);
@@ -25,10 +25,10 @@ $needle = base64_decode('44CC');
 foreach ($offsets as $i) {
 	echo "\n-- Offset is $i --\n";
 	echo "Multibyte String:\n";
-	var_dump( mb_strrpos($string_mb, $needle, $i, 'UTF-8') );
+	var_dump( mb2_strrpos($string_mb, $needle, $i, 'UTF-8') );
 	echo "ASCII String:\n";
-	echo "mb_strrpos:\n";
-	var_dump(mb_strrpos(b'This is na English ta', b'a', $i));
+	echo "mb2_strrpos:\n";
+	var_dump(mb2_strrpos(b'This is na English ta', b'a', $i));
 	echo "strrpos:\n";
 	var_dump(strrpos(b'This is na English ta', b'a', $i));
 }
@@ -39,12 +39,12 @@ foreach ($offsets as $i) {
 -- Offset is -25 --
 Multibyte String:
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 ASCII String:
-mb_strrpos:
+mb2_strrpos:
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 strrpos:
 
@@ -54,12 +54,12 @@ bool(false)
 -- Offset is -24 --
 Multibyte String:
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 ASCII String:
-mb_strrpos:
+mb2_strrpos:
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 strrpos:
 
@@ -70,7 +70,7 @@ bool(false)
 Multibyte String:
 bool(false)
 ASCII String:
-mb_strrpos:
+mb2_strrpos:
 bool(false)
 strrpos:
 bool(false)
@@ -79,7 +79,7 @@ bool(false)
 Multibyte String:
 int(9)
 ASCII String:
-mb_strrpos:
+mb2_strrpos:
 int(9)
 strrpos:
 int(9)

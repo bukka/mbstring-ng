@@ -1,24 +1,24 @@
 --TEST--
-Test mb_ereg() function : usage variations - match special characters
+Test mb2_ereg() function : usage variations - match special characters
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg') or die("skip mb_ereg() is not available in this build");
+function_exists('mb2_ereg') or die("skip mb2_ereg() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_ereg(string $pattern, string $string [, array $registers])
+/* Prototype  : int mb2_ereg(string $pattern, string $string [, array $registers])
  * Description: Regular expression match for multibyte string 
  * Source code: ext/mbstring/php_mbregex.c
  */
 
 /*
- * Test how mb_ereg() matches special characters for $pattern
+ * Test how mb2_ereg() matches special characters for $pattern
  */
 
-echo "*** Testing mb_ereg() : usage variations ***\n";
+echo "*** Testing mb2_ereg() : usage variations ***\n";
 
-if(mb_regex_encoding('utf-8') == true) {
+if(mb2_regex_encoding('utf-8') == true) {
 	echo "Regex encoding set to utf-8\n";
 } else {
 	echo "Could not set regex encoding to utf-8\n";
@@ -43,11 +43,11 @@ foreach ($regex_char as $displayChar => $char) {
 		$regs_mb = null;
 	}
 	echo "-- ASCII String: --\n";
-	var_dump(mb_ereg($char, $string_ascii, $regs_ascii));
+	var_dump(mb2_ereg($char, $string_ascii, $regs_ascii));
 	base64_encode_var_dump($regs_ascii);
 
 	echo "-- Multibyte String: --\n";
-	var_dump(mb_ereg($char, $string_mb, $regs_mb));
+	var_dump(mb2_ereg($char, $string_mb, $regs_mb));
 	base64_encode_var_dump($regs_mb);
 
 }
@@ -78,7 +78,7 @@ echo "Done";
 
 ?>
 --EXPECT--
-*** Testing mb_ereg() : usage variations ***
+*** Testing mb2_ereg() : usage variations ***
 Regex encoding set to utf-8
 
 --** Pattern is: \w+ **--

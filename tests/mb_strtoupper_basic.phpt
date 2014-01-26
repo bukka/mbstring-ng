@@ -1,31 +1,31 @@
 --TEST--
-Test mb_strtoupper() function : basic functionality
+Test mb2_strtoupper() function : basic functionality
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtoupper') or die("skip mb_strtoupper() is not available in this build");
+function_exists('mb2_strtoupper') or die("skip mb2_strtoupper() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtoupper(string $sourcestring [, string $encoding]
+/* Prototype  : string mb2_strtoupper(string $sourcestring [, string $encoding]
  * Description: Returns a uppercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test basic functionality of mb_strtoupper
+ * Test basic functionality of mb2_strtoupper
  */
 
-echo "*** Testing mb_strtoupper() : basic functionality ***\n";
+echo "*** Testing mb2_strtoupper() : basic functionality ***\n";
 
-mb_internal_encoding('utf-8');
+mb2_internal_encoding('utf-8');
 $ascii_lower = b'abcdefghijklmnopqrstuvwxyz';
 $ascii_upper = b'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $greek_lower = base64_decode('zrHOss6zzrTOtc62zrfOuM65zrrOu868zr3Ovs6/z4DPgc+Dz4TPhc+Gz4fPiM+J');
 $greek_upper = base64_decode('zpHOks6TzpTOlc6WzpfOmM6ZzprOm86czp3Ons6fzqDOoc6jzqTOpc6mzqfOqM6p');
 
 echo "\n-- ASCII String --\n";
-$ascii = mb_strtoupper($ascii_lower);
+$ascii = mb2_strtoupper($ascii_lower);
 var_dump(base64_encode($ascii));
 
 if($ascii == $ascii_upper) {
@@ -35,7 +35,7 @@ if($ascii == $ascii_upper) {
 }
 
 echo "\n-- Multibyte String --\n";
-$mb = mb_strtoupper($greek_lower, 'UTF-8');
+$mb = mb2_strtoupper($greek_lower, 'UTF-8');
 var_dump(base64_encode($mb));
 
 if ($mb == $greek_upper) {
@@ -48,7 +48,7 @@ echo "Done";
 ?>
 
 --EXPECT--
-*** Testing mb_strtoupper() : basic functionality ***
+*** Testing mb2_strtoupper() : basic functionality ***
 
 -- ASCII String --
 string(36) "QUJDREVGR0hJSktMTU5PUFFSU1RVVldYWVo="

@@ -1,25 +1,25 @@
 --TEST--
-Test mb_ereg() function : usage variations - pass different character classes to see they match correctly
+Test mb2_ereg() function : usage variations - pass different character classes to see they match correctly
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg') or die("skip mb_ereg() is not available in this build");
+function_exists('mb2_ereg') or die("skip mb2_ereg() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_ereg(string $pattern, string $string [, array $registers])
+/* Prototype  : int mb2_ereg(string $pattern, string $string [, array $registers])
  * Description: Regular expression match for multibyte string 
  * Source code: ext/mbstring/php_mbregex.c
  */
 
 /*
- * test that mb_ereg can match correctly when passed different character classes.
+ * test that mb2_ereg can match correctly when passed different character classes.
  */
 
-echo "*** Testing mb_ereg() : variation ***\n";
+echo "*** Testing mb2_ereg() : variation ***\n";
 
 
-mb_regex_encoding('utf-8'); // have to set otherwise won't match $mb properly
+mb2_regex_encoding('utf-8'); // have to set otherwise won't match $mb properly
 $mb = base64_decode('5pel5pys6Kqe');
 $character_classes = array (b'aB1'    => b'[[:alnum:]]+', /*1*/
                             b'aBcD'   => b'[[:alpha:]]+',
@@ -41,7 +41,7 @@ foreach($character_classes as $string => $pattern) {
 	}
 	// make sure any multibyte output is in base 64
 	echo "\n-- Iteration $iterator --\n";
-	var_dump(mb_ereg($pattern, $string, $regs));
+	var_dump(mb2_ereg($pattern, $string, $regs));
 	base64_encode_var_dump($regs);
 	$iterator++;
 }
@@ -71,7 +71,7 @@ echo "Done";
 ?>
 
 --EXPECT--
-*** Testing mb_ereg() : variation ***
+*** Testing mb2_ereg() : variation ***
 
 -- Iteration 1 --
 int(3)

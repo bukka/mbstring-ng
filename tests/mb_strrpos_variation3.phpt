@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strrpos() function : usage variations - Pass different data types as $offset arg
+Test mb2_strrpos() function : usage variations - Pass different data types as $offset arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strrpos') or die("skip mb_strrpos() is not available in this build");
+function_exists('mb2_strrpos') or die("skip mb2_strrpos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
+/* Prototype  : int mb2_strrpos(string $haystack, string $needle [, int $offset [, string $encoding]])
  * Description: Find position of last occurrence of a string within another 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass mb_strrpos() different data types as $offset argument to test behaviour
+ * Pass mb2_strrpos() different data types as $offset argument to test behaviour
  */
 
-echo "*** Testing mb_strrpos() : usage variations ***\n";
+echo "*** Testing mb2_strrpos() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $needle = b'a';
@@ -76,18 +76,18 @@ $inputs = array(
 /*18*/ @$unset_var
 );
 
-// loop through each element of $inputs to check the behavior of mb_strrpos()
+// loop through each element of $inputs to check the behavior of mb2_strrpos()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strrpos($haystack, $needle, $input, $encoding));
+  var_dump( mb2_strrpos($haystack, $needle, $input, $encoding));
   $iterator++;
 };
 
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strrpos() : usage variations ***
+*** Testing mb2_strrpos() : usage variations ***
 
 -- Iteration 1 --
 int(8)
@@ -97,12 +97,12 @@ int(8)
 
 -- Iteration 3 --
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 
 -- Iteration 4 --
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 
 -- Iteration 5 --
@@ -113,7 +113,7 @@ bool(false)
 
 -- Iteration 7 --
 
-Warning: mb_strrpos(): Offset is greater than the length of haystack string in %s on line %d
+Warning: mb2_strrpos(): Offset is greater than the length of haystack string in %s on line %d
 bool(false)
 
 -- Iteration 8 --

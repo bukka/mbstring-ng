@@ -1,5 +1,5 @@
 --TEST--
-mb_convert_variables()
+mb2_convert_variables()
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
@@ -22,22 +22,22 @@ $euc_jp = '日本語テキストです。01234５６７８９。';
 // Test for single scaler
 echo "== SCALER TEST ==\n";
 $s = $sjis;
-$encoding = mb_convert_variables('EUC-JP', 'SJIS', $s);
+$encoding = mb2_convert_variables('EUC-JP', 'SJIS', $s);
 print("$encoding\n"); // SJIS
 print("$s\n"); // Converted to EUC-JP
 
 $s = $jis;
-$encoding = mb_convert_variables('EUC-JP', 'JIS', $s);
+$encoding = mb2_convert_variables('EUC-JP', 'JIS', $s);
 print("$encoding\n"); // JIS
 print("$s\n"); // Converted to EUC-JP
 
 $s = $euc_jp;
-$encoding = mb_convert_variables('SJIS', 'EUC-JP', $s);
+$encoding = mb2_convert_variables('SJIS', 'EUC-JP', $s);
 print("$encoding\n"); // EUC-JP
 print(base64_encode($s)."\n"); // Converted to SJIS (base64 encoded)
 
 $s = $euc_jp;
-$encoding = mb_convert_variables('JIS', 'EUC-JP', $s);
+$encoding = mb2_convert_variables('JIS', 'EUC-JP', $s);
 print("$encoding\n"); // EUC-JP
 print(base64_encode($s)."\n"); // Converted to JIS (base64 encoded)
 
@@ -45,7 +45,7 @@ print(base64_encode($s)."\n"); // Converted to JIS (base64 encoded)
 $s1 = $euc_jp;
 $s2 = $euc_jp;
 $s3 = $euc_jp;
-$encoding = mb_convert_variables('EUC-JP', 'auto', $s1, $s2, $s3);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $s1, $s2, $s3);
 print("$encoding\n"); // EUC-JP
 print("$s1$s2$s3\n"); // Converted to EUC-JP
 
@@ -56,13 +56,13 @@ print("$s1$s2$s3\n"); // Converted to EUC-JP
 echo "== ARRAY TEST ==\n";
 $a = array($s3, $s2, $s1);
 $aa = $a;
-$encoding = mb_convert_variables('EUC-JP', 'auto', $aa);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $aa);
 print("$encoding\n"); // EUC-JP
 print("{$aa[0]}{$aa[1]}{$aa[2]}\n"); // Converted to EUC-JP
 
 $a = array($s1, $s2, $s3);
 $aa = $a;
-$encoding = mb_convert_variables('EUC-JP', 'auto', $aa);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $aa);
 print("$encoding\n"); // EUC-JP
 print("{$aa[0]}{$aa[1]}{$aa[2]}\n"); // Converted to EUC-JP
 
@@ -105,13 +105,13 @@ class bar
 
 $o = new foo;
 $oo = $o;
-$encoding = mb_convert_variables('EUC-JP', 'auto', $oo);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $oo);
 print("$encoding\n");   // EUC-JP
 print("{$oo->s1}{$oo->s2}{$oo->s3}\n"); // Converted to EUC-JP
 
 $o = new bar;
 $oo = $o;
-$encoding = mb_convert_variables('EUC-JP', 'auto', $oo);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $oo);
 print("$encoding\n"); // EUC-JP
 print("{$oo->s1}{$oo->s2}{$oo->s3}\n"); // Converted to EUC-JP
 
@@ -125,7 +125,7 @@ $s3 = $euc_jp;
 $aa = $a;
 $oo = $o;
 
-$encoding = mb_convert_variables('EUC-JP', 'auto', $s1, $s2, $s3, $aa, $oo);
+$encoding = mb2_convert_variables('EUC-JP', 'auto', $s1, $s2, $s3, $aa, $oo);
 print("$encoding\n"); // EUC-JP
 print("$s1$s2$s3\n"); // Converted to EUC-JP
 print("{$aa[0]}{$aa[1]}{$aa[2]}\n"); // Converted to EUC-JP

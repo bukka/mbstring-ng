@@ -1,22 +1,22 @@
 --TEST--
-Test mb_ereg() function : usage variations - pass different data types to $string arg
+Test mb2_ereg() function : usage variations - pass different data types to $string arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_ereg') or die("skip mb_ereg() is not available in this build");
+function_exists('mb2_ereg') or die("skip mb2_ereg() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_ereg(string $pattern, string $string [, array $registers])
+/* Prototype  : int mb2_ereg(string $pattern, string $string [, array $registers])
  * Description: Regular expression match for multibyte string 
  * Source code: ext/mbstring/php_mbregex.c
  */
 
 /*
- * Test behaviour of mb_ereg() when passed different data types as $string arg
+ * Test behaviour of mb2_ereg() when passed different data types as $string arg
  */
 
-echo "*** Testing mb_ereg() : usage variations ***\n";
+echo "*** Testing mb2_ereg() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $pattern = 'str';
@@ -89,14 +89,14 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_ereg()
+// loop through each element of $inputs to check the behavior of mb2_ereg()
 $iterator = 1;
 foreach($inputs as $input) {
 	if (@is_array($regs)){
 		$regs = null;
 	}
 	echo "\n-- Iteration $iterator --\n";
-	var_dump( mb_ereg($pattern, $input, $regs) );
+	var_dump( mb2_ereg($pattern, $input, $regs) );
 	var_dump($regs);
 	$iterator++;
 };
@@ -108,7 +108,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_ereg() : usage variations ***
+*** Testing mb2_ereg() : usage variations ***
 
 -- Iteration 1 --
 bool(false)
@@ -210,7 +210,7 @@ NULL
 
 -- Iteration 24 --
 
-Warning: mb_ereg() expects parameter 2 to be string, resource given in %s on line %d
+Warning: mb2_ereg() expects parameter 2 to be string, resource given in %s on line %d
 bool(false)
 NULL
 Done

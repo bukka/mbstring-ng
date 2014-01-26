@@ -1,9 +1,9 @@
 --TEST--
-mb_send_mail() test 2 (lang=Japanese)
+mb2_send_mail() test 2 (lang=Japanese)
 --SKIPIF--
 <?php
-if (!function_exists("mb_send_mail") || !mb_language("japanese")) {
-	die("skip mb_send_mail() not available");
+if (!function_exists("mb2_send_mail") || !mb2_language("japanese")) {
+	die("skip mb2_send_mail() not available");
 }
 ?>
 --INI--
@@ -13,12 +13,12 @@ sendmail_path=/bin/cat
 $to = 'example@example.com';
 
 /* default setting */
-mb_send_mail($to, mb_language(), "test");
+mb2_send_mail($to, mb2_language(), "test");
 
 /* Japanese (EUC-JP) */
-if (mb_language("japanese")) {
-	mb_internal_encoding('EUC-JP');
-	mb_send_mail($to, "テスト ".mb_language(), "テスト");
+if (mb2_language("japanese")) {
+	mb2_internal_encoding('EUC-JP');
+	mb2_send_mail($to, "テスト ".mb2_language(), "テスト");
 }
 ?>
 --EXPECTF--

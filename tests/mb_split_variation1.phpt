@@ -1,19 +1,19 @@
 --TEST--
-Test mb_split() function : usage variations  - different parameter types for pattern
+Test mb2_split() function : usage variations  - different parameter types for pattern
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_split') or die("skip mb_split() is not available in this build");
+function_exists('mb2_split') or die("skip mb2_split() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : proto array mb_split(string pattern, string string [, int limit])
+/* Prototype  : proto array mb2_split(string pattern, string string [, int limit])
  * Description: split multibyte string into array by regular expression 
  * Source code: ext/mbstring/php_mbregex.c
  * Alias to functions: 
  */
 
-echo "*** Testing mb_split() : usage variations ***\n";
+echo "*** Testing mb2_split() : usage variations ***\n";
 
 // Initialise function arguments not being substituted (if any)
 $string = 'a b c d e f g';
@@ -92,14 +92,14 @@ $inputs = array(
 $iterator = 1;
 foreach($inputs as $input) {
       echo "\n-- Iteration $iterator --\n";
-      var_dump( mb_split($input, $string, $limit) );
+      var_dump( mb2_split($input, $string, $limit) );
       $iterator++;
 };
 fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_split() : usage variations ***
+*** Testing mb2_split() : usage variations ***
 
 -- Iteration 1 --
 array(1) {
@@ -157,7 +157,7 @@ array(1) {
 
 -- Iteration 10 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -165,7 +165,7 @@ array(1) {
 
 -- Iteration 11 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -179,7 +179,7 @@ array(1) {
 
 -- Iteration 13 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -193,7 +193,7 @@ array(1) {
 
 -- Iteration 15 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -201,7 +201,7 @@ array(1) {
 
 -- Iteration 16 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -209,7 +209,7 @@ array(1) {
 
 -- Iteration 17 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -241,7 +241,7 @@ array(1) {
 
 -- Iteration 22 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -249,7 +249,7 @@ array(1) {
 
 -- Iteration 23 --
 
-Warning: mb_split(): Empty regular expression in %s on line %d
+Warning: mb2_split(): Empty regular expression in %s on line %d
 array(1) {
   [0]=>
   string(13) "a b c d e f g"
@@ -257,6 +257,6 @@ array(1) {
 
 -- Iteration 24 --
 
-Warning: mb_split() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_split() expects parameter 1 to be string, resource given in %s on line %d
 bool(false)
 Done

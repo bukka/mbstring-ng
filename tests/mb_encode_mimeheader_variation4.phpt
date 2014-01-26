@@ -1,24 +1,24 @@
 --TEST--
-Test mb_encode_mimeheader() function : usage variations - Pass different data types to $linefeed arg
+Test mb2_encode_mimeheader() function : usage variations - Pass different data types to $linefeed arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_encode_mimeheader') or die("skip mb_encode_mimeheader() is not available in this build");
+function_exists('mb2_encode_mimeheader') or die("skip mb2_encode_mimeheader() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_encode_mimeheader
+/* Prototype  : string mb2_encode_mimeheader
  * (string $str [, string $charset [, string $transfer_encoding [, string $linefeed [, int $indent]]]])
  * Description: Converts the string to MIME "encoded-word" in the format of =?charset?(B|Q)?encoded_string?= 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass different data types to $linefeed argument to see how mb_encode_mimeheader() behaves
+ * Pass different data types to $linefeed argument to see how mb2_encode_mimeheader() behaves
  */
 
-echo "*** Testing mb_encode_mimeheader() : usage variations ***\n";
-mb_internal_encoding('utf-8');
+echo "*** Testing mb2_encode_mimeheader() : usage variations ***\n";
+mb2_internal_encoding('utf-8');
 
 
 // Initialise function arguments not being substituted
@@ -96,11 +96,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_encode_mimeheader()
+// loop through each element of $inputs to check the behavior of mb2_encode_mimeheader()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_encode_mimeheader($str, $charset, $transfer_encoding, $input, $indent));
+  var_dump( mb2_encode_mimeheader($str, $charset, $transfer_encoding, $input, $indent));
   $iterator++;
 };
 
@@ -109,7 +109,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_encode_mimeheader() : usage variations ***
+*** Testing mb2_encode_mimeheader() : usage variations ***
 
 -- Iteration 1 --
 string(114) "=?UTF-8?B?zpHPhc+Ez4wgzrXOr869zrHOuSDOtc67zrvOt869zrnOus+MIM66zrXOr868?=0 =?UTF-8?B?zrXOvc6/LiAwMTIzNDU2Nzg5Lg==?="
@@ -182,6 +182,6 @@ string(113) "=?UTF-8?B?zpHPhc+Ez4wgzrXOr869zrHOuSDOtc67zrvOt869zrnOus+MIM66zrXOr
 
 -- Iteration 24 --
 
-Warning: mb_encode_mimeheader() expects parameter 4 to be string, resource given in %s on line %d
+Warning: mb2_encode_mimeheader() expects parameter 4 to be string, resource given in %s on line %d
 NULL
 Done

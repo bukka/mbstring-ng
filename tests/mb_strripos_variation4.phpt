@@ -1,24 +1,24 @@
 --TEST--
-Test mb_strripos() function : usage variations - pass different data types as $encoding arg
+Test mb2_strripos() function : usage variations - pass different data types as $encoding arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strripos') or die("skip mb_strripos() is not available in this build");
+function_exists('mb2_strripos') or die("skip mb2_strripos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strripos(string haystack, string needle [, int offset [, string encoding]])
+/* Prototype  : int mb2_strripos(string haystack, string needle [, int offset [, string encoding]])
  * Description: Finds position of last occurrence of a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
 /*
- * Pass mb_strripos different data types as $encoding arg to test behaviour
+ * Pass mb2_strripos different data types as $encoding arg to test behaviour
  * Where possible 'UTF-8' has been entered as a string value
  */
 
-echo "*** Testing mb_strripos() : usage variations ***\n";
+echo "*** Testing mb2_strripos() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $haystack = b'string_val';
@@ -93,11 +93,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strripos()
+// loop through each element of $inputs to check the behavior of mb2_strripos()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strripos($haystack, $needle, $offset, $input));
+  var_dump( mb2_strripos($haystack, $needle, $offset, $input));
   $iterator++;
 };
 
@@ -107,91 +107,91 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strripos() : usage variations ***
+*** Testing mb2_strripos() : usage variations ***
 
 -- Iteration 1 --
 
-Warning: mb_strripos(): Unknown encoding "0" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "0" in %s on line %d
 bool(false)
 
 -- Iteration 2 --
 
-Warning: mb_strripos(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 3 --
 
-Warning: mb_strripos(): Unknown encoding "12345" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "12345" in %s on line %d
 bool(false)
 
 -- Iteration 4 --
 
-Warning: mb_strripos(): Unknown encoding "-2345" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "-2345" in %s on line %d
 bool(false)
 
 -- Iteration 5 --
 
-Warning: mb_strripos(): Unknown encoding "10.5" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "10.5" in %s on line %d
 bool(false)
 
 -- Iteration 6 --
 
-Warning: mb_strripos(): Unknown encoding "-10.5" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "-10.5" in %s on line %d
 bool(false)
 
 -- Iteration 7 --
 
-Warning: mb_strripos(): Unknown encoding "123456789000" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "123456789000" in %s on line %d
 bool(false)
 
 -- Iteration 8 --
 
-Warning: mb_strripos(): Unknown encoding "1.23456789E-9" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "1.23456789E-9" in %s on line %d
 bool(false)
 
 -- Iteration 9 --
 
-Warning: mb_strripos(): Unknown encoding "0.5" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "0.5" in %s on line %d
 bool(false)
 
 -- Iteration 10 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 11 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 12 --
 
-Warning: mb_strripos(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 13 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 14 --
 
-Warning: mb_strripos(): Unknown encoding "1" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "1" in %s on line %d
 bool(false)
 
 -- Iteration 15 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 16 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 17 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 18 --
@@ -208,16 +208,16 @@ int(7)
 
 -- Iteration 22 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 23 --
 
-Warning: mb_strripos(): Unknown encoding "" in %s on line %d
+Warning: mb2_strripos(): Unknown encoding "" in %s on line %d
 bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_strripos() expects parameter 4 to be string, resource given in %s on line %d
+Warning: mb2_strripos() expects parameter 4 to be string, resource given in %s on line %d
 bool(false)
 Done

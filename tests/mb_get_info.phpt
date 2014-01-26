@@ -1,5 +1,5 @@
 --TEST--
-Test mb_get_info() function
+Test mb2_get_info() function
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip'); ?>
 --INI--
@@ -15,12 +15,12 @@ mbstring.substitute_character=123
 mbstring.strict_detection=1
 --FILE--
 <?php
-mb_parse_str("abc=def", $dummy);
-mb_convert_encoding("\xff\xff", "Shift_JIS", "UCS-2BE");
-$result = mb_get_info();
+mb2_parse_str("abc=def", $dummy);
+mb2_convert_encoding("\xff\xff", "Shift_JIS", "UCS-2BE");
+$result = mb2_get_info();
 var_dump($result);
 foreach (array_keys($result) as $key) {
-    var_dump($result[$key], mb_get_info($key));
+    var_dump($result[$key], mb2_get_info($key));
 }
 ?>
 --EXPECT--
@@ -38,29 +38,29 @@ array(15) {
   ["func_overload_list"]=>
   array(12) {
     ["strlen"]=>
-    string(9) "mb_strlen"
+    string(9) "mb2_strlen"
     ["strpos"]=>
-    string(9) "mb_strpos"
+    string(9) "mb2_strpos"
     ["strrpos"]=>
-    string(10) "mb_strrpos"
+    string(10) "mb2_strrpos"
     ["stripos"]=>
-    string(10) "mb_stripos"
+    string(10) "mb2_stripos"
     ["strripos"]=>
-    string(11) "mb_strripos"
+    string(11) "mb2_strripos"
     ["strstr"]=>
-    string(9) "mb_strstr"
+    string(9) "mb2_strstr"
     ["strrchr"]=>
-    string(10) "mb_strrchr"
+    string(10) "mb2_strrchr"
     ["stristr"]=>
-    string(10) "mb_stristr"
+    string(10) "mb2_stristr"
     ["substr"]=>
-    string(9) "mb_substr"
+    string(9) "mb2_substr"
     ["strtolower"]=>
-    string(13) "mb_strtolower"
+    string(13) "mb2_strtolower"
     ["strtoupper"]=>
-    string(13) "mb_strtoupper"
+    string(13) "mb2_strtoupper"
     ["substr_count"]=>
-    string(15) "mb_substr_count"
+    string(15) "mb2_substr_count"
   }
   ["mail_charset"]=>
   string(11) "ISO-2022-KR"
@@ -102,55 +102,55 @@ int(2)
 int(2)
 array(12) {
   ["strlen"]=>
-  string(9) "mb_strlen"
+  string(9) "mb2_strlen"
   ["strpos"]=>
-  string(9) "mb_strpos"
+  string(9) "mb2_strpos"
   ["strrpos"]=>
-  string(10) "mb_strrpos"
+  string(10) "mb2_strrpos"
   ["stripos"]=>
-  string(10) "mb_stripos"
+  string(10) "mb2_stripos"
   ["strripos"]=>
-  string(11) "mb_strripos"
+  string(11) "mb2_strripos"
   ["strstr"]=>
-  string(9) "mb_strstr"
+  string(9) "mb2_strstr"
   ["strrchr"]=>
-  string(10) "mb_strrchr"
+  string(10) "mb2_strrchr"
   ["stristr"]=>
-  string(10) "mb_stristr"
+  string(10) "mb2_stristr"
   ["substr"]=>
-  string(9) "mb_substr"
+  string(9) "mb2_substr"
   ["strtolower"]=>
-  string(13) "mb_strtolower"
+  string(13) "mb2_strtolower"
   ["strtoupper"]=>
-  string(13) "mb_strtoupper"
+  string(13) "mb2_strtoupper"
   ["substr_count"]=>
-  string(15) "mb_substr_count"
+  string(15) "mb2_substr_count"
 }
 array(12) {
   ["strlen"]=>
-  string(9) "mb_strlen"
+  string(9) "mb2_strlen"
   ["strpos"]=>
-  string(9) "mb_strpos"
+  string(9) "mb2_strpos"
   ["strrpos"]=>
-  string(10) "mb_strrpos"
+  string(10) "mb2_strrpos"
   ["stripos"]=>
-  string(10) "mb_stripos"
+  string(10) "mb2_stripos"
   ["strripos"]=>
-  string(11) "mb_strripos"
+  string(11) "mb2_strripos"
   ["strstr"]=>
-  string(9) "mb_strstr"
+  string(9) "mb2_strstr"
   ["strrchr"]=>
-  string(10) "mb_strrchr"
+  string(10) "mb2_strrchr"
   ["stristr"]=>
-  string(10) "mb_stristr"
+  string(10) "mb2_stristr"
   ["substr"]=>
-  string(9) "mb_substr"
+  string(9) "mb2_substr"
   ["strtolower"]=>
-  string(13) "mb_strtolower"
+  string(13) "mb2_strtolower"
   ["strtoupper"]=>
-  string(13) "mb_strtoupper"
+  string(13) "mb2_strtoupper"
   ["substr_count"]=>
-  string(15) "mb_substr_count"
+  string(15) "mb2_substr_count"
 }
 string(11) "ISO-2022-KR"
 string(11) "ISO-2022-KR"

@@ -1,5 +1,5 @@
 --TEST--
-mb_detect_encoding()
+mb2_detect_encoding()
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
@@ -22,19 +22,19 @@ $euc_jp = '日本語テキストです。01234５６７８９。';
 // Note: For some reason it complains, results are differ. Not reserched.
 echo "== BASIC TEST ==\n";
 $s = $sjis;
-$s = mb_detect_encoding($s, 'SJIS');
+$s = mb2_detect_encoding($s, 'SJIS');
 print("SJIS: $s\n"); 
 
 $s = $jis;
-$s = mb_detect_encoding($s, 'JIS');
+$s = mb2_detect_encoding($s, 'JIS');
 print("JIS: $s\n");
 
 $s = $euc_jp;
-$s = mb_detect_encoding($s, 'UTF-8,EUC-JP,JIS');
+$s = mb2_detect_encoding($s, 'UTF-8,EUC-JP,JIS');
 print("EUC-JP: $s\n");
 
 $s = $euc_jp;
-$s = mb_detect_encoding($s, 'JIS,EUC-JP');
+$s = mb2_detect_encoding($s, 'JIS,EUC-JP');
 print("EUC-JP: $s\n");
 
 
@@ -46,52 +46,52 @@ $a = array(0=>'UTF-8',1=>'EUC-JP', 2=>'SJIS', 3=>'JIS');
 
 // Note: Due to detect order, detected as UTF-8
 $s = $jis;
-$s = mb_detect_encoding($s, $a);
+$s = mb2_detect_encoding($s, $a);
 print("JIS: $s\n");
 
 $s = $euc_jp;
-$s = mb_detect_encoding($s, $a);
+$s = mb2_detect_encoding($s, $a);
 print("EUC-JP: $s\n");
 
 $s = $sjis;
-$s = mb_detect_encoding($s, $a);
+$s = mb2_detect_encoding($s, $a);
 print("SJIS: $s\n"); 
 
 
 // Using Detect Order 
 echo "== DETECT ORDER ==\n";
 
-mb_detect_order('auto');
+mb2_detect_order('auto');
 
 
 $s = $jis;
-$s = mb_detect_encoding($s);
+$s = mb2_detect_encoding($s);
 print("JIS: $s\n"); 
 
 $s = $euc_jp;
-$s = mb_detect_encoding($s);
+$s = mb2_detect_encoding($s);
 print("EUC-JP: $s\n"); 
 
 $s = $sjis;
-$s = mb_detect_encoding($s);
+$s = mb2_detect_encoding($s);
 print("SJIS: $s\n"); 
 
 
 // Invalid(?) Parameters
 echo "== INVALID PARAMETER ==\n";
 
-$s = mb_detect_encoding(1234, 'EUC-JP');
+$s = mb2_detect_encoding(1234, 'EUC-JP');
 print("INT: $s\n"); // EUC-JP
 
-$s = mb_detect_encoding('', 'EUC-JP');
+$s = mb2_detect_encoding('', 'EUC-JP');
 print("EUC-JP: $s\n");  // SJIS
 
 $s = $euc_jp;
-$s = mb_detect_encoding($s, 'BAD');
+$s = mb2_detect_encoding($s, 'BAD');
 print("BAD: $s\n"); // BAD
 
 $s = $euc_jp;
-$s = mb_detect_encoding();
+$s = mb2_detect_encoding();
 print("MP: $s\n"); // Missing parameter
 
 

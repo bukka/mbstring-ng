@@ -1,15 +1,15 @@
 --TEST--
-mb_output_handler() and mbstring.http_output_conv_mimetypes (3)
+mb2_output_handler() and mbstring.http_output_conv_mimetypes (3)
 --SKIPIF--
 <?php extension_loaded('mbstring') or die('skip mbstring not available'); ?>
 --INI--
 mbstring.internal_encoding=UTF-8
 --FILE--
 <?php
-mb_http_output("EUC-JP");
+mb2_http_output("EUC-JP");
 header("Content-Type: application/xhtml+xml");
 ob_start();
-ob_start('mb_output_handler');
+ob_start('mb2_output_handler');
 echo "テスト";
 ob_end_flush();
 var_dump(bin2hex(ob_get_clean()));

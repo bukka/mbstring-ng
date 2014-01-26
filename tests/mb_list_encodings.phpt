@@ -1,11 +1,11 @@
 --TEST--
-mb_list_encodings
+mb2_list_encodings
 --FILE--
 <?php
-var_dump(in_array("7bit", mb_list_encodings()));
-var_dump(in_array("8bit", mb_list_encodings()));
-var_dump(in_array("ASCII", mb_list_encodings()));
-var_dump(in_array("non-existent", mb_list_encodings()));
+var_dump(in_array("7bit", mb2_list_encodings()));
+var_dump(in_array("8bit", mb2_list_encodings()));
+var_dump(in_array("ASCII", mb2_list_encodings()));
+var_dump(in_array("non-existent", mb2_list_encodings()));
 ?>
 --EXPECT--
 bool(true)

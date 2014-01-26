@@ -1,26 +1,26 @@
 --TEST--
-Test mb_encode_mimeheader() function : basic functionality
+Test mb2_encode_mimeheader() function : basic functionality
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_encode_mimeheader') or die("skip mb_encode_mimeheader() is not available in this build");
+function_exists('mb2_encode_mimeheader') or die("skip mb2_encode_mimeheader() is not available in this build");
 ?>
 
 --FILE--
 <?php
-/* Prototype  : string mb_encode_mimeheader
+/* Prototype  : string mb2_encode_mimeheader
  * (string $str [, string $charset [, string $transfer-encoding [, string $linefeed [, int $indent]]]])
  * Description: Converts the string to MIME "encoded-word" in the format of =?charset?(B|Q)?encoded_string?= 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test basic functionality of mb_encode_mimeheader with different strings.
+ * Test basic functionality of mb2_encode_mimeheader with different strings.
  * For the below strings:
  * 'English' is ASCII only, 'Japanese' has no ASCII characters and 'Greek' is mixed.
  */
 
-echo "*** Testing mb_encode_mimeheader() : basic ***\n";
+echo "*** Testing mb2_encode_mimeheader() : basic ***\n";
 
 $english = array('English' => 'This is an English string. 0123456789');
 $nonEnglish = array('Japanese' => base64_decode('5pel5pys6Kqe44OG44Kt44K544OI44Gn44GZ44CC'),
@@ -29,25 +29,25 @@ $nonEnglish = array('Japanese' => base64_decode('5pel5pys6Kqe44OG44Kt44K544OI44G
 foreach ($english as $lang => $input) {
 	echo "\nLanguage: $lang\n";
 	echo "-- Base 64: --\n";
-	var_dump(mb_encode_mimeheader($input, 'UTF-8', 'B'));
+	var_dump(mb2_encode_mimeheader($input, 'UTF-8', 'B'));
 	echo "-- Quoted-Printable --\n";
-	var_dump(mb_encode_mimeheader($input, 'UTF-8', 'Q'));
+	var_dump(mb2_encode_mimeheader($input, 'UTF-8', 'Q'));
 }
 
-mb_internal_encoding('utf-8');
+mb2_internal_encoding('utf-8');
 
 foreach ($nonEnglish as $lang => $input) {
 	echo "\nLanguage: $lang\n";
 	echo "-- Base 64: --\n";
-	var_dump(mb_encode_mimeheader($input, 'UTF-8', 'B'));
+	var_dump(mb2_encode_mimeheader($input, 'UTF-8', 'B'));
 	echo "-- Quoted-Printable --\n";
-	var_dump(mb_encode_mimeheader($input, 'UTF-8', 'Q'));
+	var_dump(mb2_encode_mimeheader($input, 'UTF-8', 'Q'));
 }
 
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_encode_mimeheader() : basic ***
+*** Testing mb2_encode_mimeheader() : basic ***
 
 Language: English
 -- Base 64: --

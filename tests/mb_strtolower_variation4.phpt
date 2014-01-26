@@ -1,13 +1,13 @@
 --TEST--
-Test mb_strtolower() function : usage variations - pass different characters to check conversion is correct
+Test mb2_strtolower() function : usage variations - pass different characters to check conversion is correct
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strtolower') or die("skip mb_strtolower() is not available in this build");
+function_exists('mb2_strtolower') or die("skip mb2_strtolower() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_strtolower(string $sourcestring [, string $encoding])
+/* Prototype  : string mb2_strtolower(string $sourcestring [, string $encoding])
  * Description: Returns a lowercased version of $sourcestring
  * Source code: ext/mbstring/mbstring.c
  */
@@ -16,7 +16,7 @@ function_exists('mb_strtolower') or die("skip mb_strtolower() is not available i
  * Pass accented characters and Russian characters to check case conversion is correct
  */
 
-echo "*** Testing mb_strtolower() :  usage variations ***\n";
+echo "*** Testing mb2_strtolower() :  usage variations ***\n";
 
 $uppers = array('Basic Latin' => b'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 
                 'Characters With Accents' => base64_decode('w4DDgcOCw4PDhMOFw4bDh8OIw4nDisOLw4zDjcOOw4/DkMORw5LDk8OUw5XDlg=='),
@@ -27,7 +27,7 @@ $lowers = array('Basic Latin' => b'abcdefghijklmnopqrstuvwxyz',
 
 foreach ($uppers as $lang => $sourcestring) {
 	echo "\n-- $lang --\n";
-	$a = mb_strtolower($sourcestring, 'utf-8');
+	$a = mb2_strtolower($sourcestring, 'utf-8');
 	var_dump(base64_encode($a));
 	if ($a == $lowers[$lang]) {
 		echo "Correctly Converted\n";
@@ -40,7 +40,7 @@ echo "Done";
 ?>
 
 --EXPECTF--
-*** Testing mb_strtolower() :  usage variations ***
+*** Testing mb2_strtolower() :  usage variations ***
 
 -- Basic Latin --
 string(36) "YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXo="

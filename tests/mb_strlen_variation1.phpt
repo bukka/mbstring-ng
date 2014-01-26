@@ -1,22 +1,22 @@
 --TEST--
-Test mb_strlen() function : usage variations - Pass different data types as $str arg
+Test mb2_strlen() function : usage variations - Pass different data types as $str arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strlen') or die("skip mb_strlen() is not available in this build");
+function_exists('mb2_strlen') or die("skip mb2_strlen() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strlen(string $str [, string $encoding])
+/* Prototype  : int mb2_strlen(string $str [, string $encoding])
  * Description: Get character numbers of a string 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Test mb_strlen by passing different data types as $str argument
+ * Test mb2_strlen by passing different data types as $str argument
  */
 
-echo "*** Testing mb_strlen() : usage variations ***\n";
+echo "*** Testing mb2_strlen() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $encoding = 'utf-8';
@@ -89,11 +89,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_strlen()
+// loop through each element of $inputs to check the behavior of mb2_strlen()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_strlen($input, $encoding));
+  var_dump( mb2_strlen($input, $encoding));
   $iterator++;
 };
 
@@ -102,7 +102,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strlen() : usage variations ***
+*** Testing mb2_strlen() : usage variations ***
 
 -- Iteration 1 --
 int(1)
@@ -175,6 +175,6 @@ int(0)
 
 -- Iteration 24 --
 
-Warning: mb_strlen() expects parameter 1 to be string, resource given in %s on line %d
+Warning: mb2_strlen() expects parameter 1 to be string, resource given in %s on line %d
 bool(false)
 Done

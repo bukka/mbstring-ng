@@ -1,13 +1,13 @@
 --TEST--
-Test mb_internal_encoding() function : usage variations - Test different encodings
+Test mb2_internal_encoding() function : usage variations - Test different encodings
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_internal_encoding') or die("skip mb_internal_encoding() is not available in this build");
+function_exists('mb2_internal_encoding') or die("skip mb2_internal_encoding() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : string mb_internal_encoding([string $encoding])
+/* Prototype  : string mb2_internal_encoding([string $encoding])
  * Description: Sets the current internal encoding or Returns 
  * the current internal encoding as a string 
  * Source code: ext/mbstring/mbstring.c
@@ -19,7 +19,7 @@ function_exists('mb_internal_encoding') or die("skip mb_internal_encoding() is n
  * This test is purely to see whether the function recognises the encoding.
  */
 
-echo "*** Testing mb_internal_encoding() : usage variations ***\n";
+echo "*** Testing mb2_internal_encoding() : usage variations ***\n";
 
 $encoding = array('UCS-4',			/*1*/
                   'UCS-4BE',
@@ -81,16 +81,16 @@ $encoding = array('UCS-4',			/*1*/
 $iterator = 1;
 foreach($encoding as $enc) {
 	echo "\n-- Iteration $iterator --\n";
-	var_dump(mb_internal_encoding());
-	var_dump(mb_internal_encoding($enc));
-	var_dump(mb_internal_encoding());
+	var_dump(mb2_internal_encoding());
+	var_dump(mb2_internal_encoding($enc));
+	var_dump(mb2_internal_encoding());
 	$iterator++;
 }
 echo "Done";
 ?>
 --EXPECTF--
 
-*** Testing mb_internal_encoding() : usage variations ***
+*** Testing mb2_internal_encoding() : usage variations ***
 
 -- Iteration 1 --
 string(%d) "%s"

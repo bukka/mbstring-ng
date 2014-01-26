@@ -1,23 +1,23 @@
 --TEST--
-Test mb_stripos() function : usage variations - pass different data types as $needle arg
+Test mb2_stripos() function : usage variations - pass different data types as $needle arg
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_stripos') or die("skip mb_stripos() is not available in this build");
+function_exists('mb2_stripos') or die("skip mb2_stripos() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_stripos(string haystack, string needle [, int offset [, string encoding]])
+/* Prototype  : int mb2_stripos(string haystack, string needle [, int offset [, string encoding]])
  * Description: Finds position of first occurrence of a string within another, case insensitive 
  * Source code: ext/mbstring/mbstring.c
  * Alias to functions: 
  */
 
 /*
- * Pass mb_stripos different data types as $needle arg to test behaviour
+ * Pass mb2_stripos different data types as $needle arg to test behaviour
  */
 
-echo "*** Testing mb_stripos() : usage variations ***\n";
+echo "*** Testing mb2_stripos() : usage variations ***\n";
 
 // Initialise function arguments not being substituted
 $haystack = b'string_val';
@@ -92,11 +92,11 @@ $inputs = array(
 /*24*/ $fp
 );
 
-// loop through each element of $inputs to check the behavior of mb_stripos()
+// loop through each element of $inputs to check the behavior of mb2_stripos()
 $iterator = 1;
 foreach($inputs as $input) {
   echo "\n-- Iteration $iterator --\n";
-  var_dump( mb_stripos($haystack, $input, $offset, $encoding));
+  var_dump( mb2_stripos($haystack, $input, $offset, $encoding));
   $iterator++;
 };
 
@@ -105,7 +105,7 @@ fclose($fp);
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_stripos() : usage variations ***
+*** Testing mb2_stripos() : usage variations ***
 
 -- Iteration 1 --
 bool(false)
@@ -136,12 +136,12 @@ bool(false)
 
 -- Iteration 10 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 11 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 12 --
@@ -149,7 +149,7 @@ bool(false)
 
 -- Iteration 13 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 14 --
@@ -157,17 +157,17 @@ bool(false)
 
 -- Iteration 15 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 16 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 17 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 18 --
@@ -184,17 +184,17 @@ bool(false)
 
 -- Iteration 22 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 23 --
 
-Warning: mb_stripos(): Empty delimiter in %s on line %d
+Warning: mb2_stripos(): Empty delimiter in %s on line %d
 bool(false)
 
 -- Iteration 24 --
 
-Warning: mb_stripos() expects parameter 2 to be string, resource given in %s on line %d
+Warning: mb2_stripos() expects parameter 2 to be string, resource given in %s on line %d
 bool(false)
 Done
 

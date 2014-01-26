@@ -1,24 +1,24 @@
 --TEST--
-Test mb_strlen() function : usage variations - Pass list of encodings
+Test mb2_strlen() function : usage variations - Pass list of encodings
 --SKIPIF--
 <?php
 extension_loaded('mbstring') or die('skip');
-function_exists('mb_strlen') or die("skip mb_strlen() is not available in this build");
+function_exists('mb2_strlen') or die("skip mb2_strlen() is not available in this build");
 ?>
 --FILE--
 <?php
-/* Prototype  : int mb_strlen(string $str [, string $encoding])
+/* Prototype  : int mb2_strlen(string $str [, string $encoding])
  * Description: Get character numbers of a string 
  * Source code: ext/mbstring/mbstring.c
  */
 
 /*
- * Pass all encodings listed on php.net to mb_strlen to test that function recognises them
+ * Pass all encodings listed on php.net to mb2_strlen to test that function recognises them
  * NB: The strings passed are *NOT* necessarily encoded in the encoding passed to the function.
  * This test is purely to see whether the function recognises the encoding.
  */
 
-echo "*** Testing mb_strlen() : usage variations ***\n";
+echo "*** Testing mb2_strlen() : usage variations ***\n";
 
 $encoding = array('UCS-4',			/*1*/
                   'UCS-4BE',
@@ -87,14 +87,14 @@ foreach($encoding as $enc) {
 	echo "\n-- Iteration $iterator: $enc --\n";
 
 	echo "-- ASCII String --\n";
-	if(mb_strlen($string_ascii, $enc)) {
+	if(mb2_strlen($string_ascii, $enc)) {
 		echo "Encoding $enc recognised\n";
 	} else {
 		echo "Encoding $enc not recognised\n";
 	}
 
 	echo "-- Multibyte String --\n";
-	if(mb_strlen($string_mb, $enc)){
+	if(mb2_strlen($string_mb, $enc)){
 		echo "Encoding $enc recognised\n";
 	} else {
 		echo "Encoding $enc not recognised\n";
@@ -105,7 +105,7 @@ foreach($encoding as $enc) {
 echo "Done";
 ?>
 --EXPECTF--
-*** Testing mb_strlen() : usage variations ***
+*** Testing mb2_strlen() : usage variations ***
 
 -- Iteration 1: UCS-4 --
 -- ASCII String --
