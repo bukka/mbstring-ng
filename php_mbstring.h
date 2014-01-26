@@ -27,9 +27,9 @@
 #endif
 
 #include <unicode/utypes.h>
-#include <unicode/pwin32.h>
 
 #ifdef PHP_WIN32
+#include <unicode/pwin32.h>
 #	undef MBSTRING_NG_API
 #	ifdef MBSTRING_NG_EXPORTS
 #		define MBSTRING_NG_API __declspec(dllexport)
@@ -64,7 +64,7 @@ typedef struct {
     int persistent:1;
 } php_mb2_char_ptr_list;
 
-typedef struct php_mb2_uconverter_callback_ctx {
+struct _php_mb2_uconverter_callback_ctx {
 	char *dbuf;
 	char *pdl;
 	int persistent;
@@ -75,7 +75,8 @@ typedef struct php_mb2_uconverter_callback_ctx {
 #ifdef ZTS
 	TSRMLS_D;
 #endif
-} php_mb2_uconverter_callback_ctx;
+};
+typedef struct _php_mb2_uconverter_callback_ctx php_mb2_uconverter_callback_ctx;
 
 typedef struct php_mb2_output_handler_ctx {
     int32_t pvbuf_basic_len;

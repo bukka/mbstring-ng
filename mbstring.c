@@ -128,8 +128,8 @@ static void php_mb2_ustring_dtor(php_mb2_ustring *str);
 static int php_mb2_get_eaw(const UChar *str, int32_t len, zend_bool ambiguous_as_half, int *retval);
 static unsigned int php_mb2_sapi_filter(int arg, char *var, char **val, unsigned int val_len, unsigned int *new_val_len TSRMLS_DC);
 static unsigned int php_mb2_sapi_filter_init(TSRMLS_D);
-static php_mb2_register_sapi_filter(TSRMLS_C);
-static php_mb2_unregister_sapi_filter(TSRMLS_C);
+static php_mb2_register_sapi_filter(TSRMLS_D);
+static php_mb2_unregister_sapi_filter(TSRMLS_D);
 static void php_mb2_uconverter_from_unicode_callback(const void *_ctx, UConverterFromUnicodeArgs *args, UChar *units, int32_t length, UChar32 codePoint, UConverterCallbackReason reason, UErrorCode *err);
 static void php_mb2_uconverter_to_unicode_callback(const void *_ctx, UConverterToUnicodeArgs *args, const char *units, int32_t length, UConverterCallbackReason reason, UErrorCode *err);
 static int php_mb2_parse_mime_type(php_mb2_mime_type_buf *retval, const char *header, size_t header_len);
@@ -395,7 +395,7 @@ PHP_INI_END()
 /* {{{ module global initialize handler */
 static PHP_GINIT_FUNCTION(mbstring_ng)
 {
-	php_mb2_parse_encoding_list("UTF-8", sizeof("UTF-8") - 1, &mbstring_ng_globals->ini.http_input, 1 TSRMLS_CC);
+	php_mb2_parse_encoding_list("UTF-8", sizeof("UTF-8") - 1, &mbstring_ng_globals->ini.http_input, 1);
 	php_mb2_char_ptr_list_ctor(&mbstring_ng_globals->ini.detect_order, 1);
 	php_mb2_char_ptr_list_ctor(&mbstring_ng_globals->ini.http_input, 1);
 	php_mb2_ustring_ctor(&mbstring_ng_globals->ini.subst_string_illegal, 1);
@@ -449,7 +449,7 @@ static PHP_MINIT_FUNCTION(mbstring_ng)
 {
 	REGISTER_INI_ENTRIES();
 
-	php_mb2_register_sapi_filter();
+	php_mb2_register_sapi_filter(TSRMLS_C);
 	return SUCCESS;
 }
 /* }}} */
@@ -459,7 +459,7 @@ static PHP_MSHUTDOWN_FUNCTION(mbstring_ng)
 {
 	UNREGISTER_INI_ENTRIES();
 
-	php_mb2_unregister_sapi_filter();
+	php_mb2_unregister_sapi_filter(TSRMLS_C);
 	return SUCCESS;
 }
 /* }}} */
@@ -526,7 +526,7 @@ static PHP_INI_MH(php_mb2_OnUpdateEncodingList)
 #endif
 	php_mb2_char_ptr_list *p = (php_mb2_char_ptr_list *)(base + (size_t) mh_arg1);
 	php_mb2_char_ptr_list new_list;
-	int res = php_mb2_parse_encoding_list(new_value, (size_t)new_value_length, &new_list, 1 TSRMLS_CC);
+	int res = php_mb2_parse_encoding_list(new_value, (size_t)new_value_length, &new_list, 1);
 
 	php_mb2_char_ptr_list_dtor(p);
 
@@ -565,8 +565,8 @@ static PHP_INI_MH(php_mb2_OnUpdateUnicodeString)
 static PHP_INI_MH(php_mb2_OnUpdate_substitute_character)
 {
 	if (new_value != NULL && stage != PHP_INI_STAGE_DEACTIVATE) {
-		zend_alter_ini_entry(PHP_MB_INI_ENTRY_NAME("subst_string_illegal"), sizeof(PHP_MB_INI_ENTRY_NAME("subst_string_illegal")), new_value, new_value_length, PHP_INI_SYSTEM, stage TSRMLS_CC);
-		zend_alter_ini_entry(PHP_MB_INI_ENTRY_NAME("subst_string_unassigned"), sizeof(PHP_MB_INI_ENTRY_NAME("subst_string_unassigned")), new_value, new_value_length, PHP_INI_SYSTEM, stage TSRMLS_CC);
+		zend_alter_ini_entry_ex(PHP_MB_INI_ENTRY_NAME("subst_string_illegal"), sizeof(PHP_MB_INI_ENTRY_NAME("subst_string_illegal")), new_value, new_value_length, PHP_INI_SYSTEM, stage, 0 TSRMLS_CC);
+		zend_alter_ini_entry_ex(PHP_MB_INI_ENTRY_NAME("subst_string_unassigned"), sizeof(PHP_MB_INI_ENTRY_NAME("subst_string_unassigned")), new_value, new_value_length, PHP_INI_SYSTEM, stage, 0 TSRMLS_CC);
 	}
 	return SUCCESS;
 }
@@ -676,12 +676,13 @@ PHP_MB_FUNCTION(output_handler)
 		return;
 	}
 
+	/*
 	if (OG(ob_nesting_level)) {
-	   	if (OG(active_ob_buffer).chunk_size > 1) {
+		if (OG(active_ob_buffer).chunk_size > 1) {
 			chunk_len = OG(active_ob_buffer).chunk_size;
 		} 
 	}
-
+	*/
 	ps = string, psl = string + string_len;
 
 	if ((status & PHP_OUTPUT_HANDLER_START)) {
@@ -3039,7 +3040,7 @@ static void php_mb2_uconverter_from_unicode_callback(const void *_ctx, UConverte
 {
 	php_mb2_uconverter_callback_ctx *ctx = (void *)_ctx;
 #ifdef ZTS
-	TSRMLS_D = ctx.TSRMLS_C;
+	TSRMLS_D = ctx->TSRMLS_C;
 #endif
 	switch (reason) {
 	case UCNV_UNASSIGNED:
@@ -3107,9 +3108,7 @@ static void php_mb2_uconverter_from_unicode_callback(const void *_ctx, UConverte
 static void php_mb2_uconverter_to_unicode_callback(const void *_ctx, UConverterToUnicodeArgs *args, const char *units, int32_t length, UConverterCallbackReason reason, UErrorCode *err)
 {
 	php_mb2_uconverter_callback_ctx *ctx = (void *)_ctx;
-#ifdef ZTS
-	TSRMLS_D = ctx.TSRMLS_C;
-#endif
+
 	switch (reason) {
 	case UCNV_UNASSIGNED:
 	case UCNV_IRREGULAR:
@@ -3750,14 +3749,14 @@ static unsigned int php_mb2_sapi_filter_init(TSRMLS_D)
 	}
 }
 
-static php_mb2_register_sapi_filter(TSRMLS_C)
+static php_mb2_register_sapi_filter(TSRMLS_D)
 {
 	php_mb2_next_input_filter_init = sapi_module.input_filter_init;
 	php_mb2_next_input_filter = sapi_module.input_filter;
-	sapi_register_input_filter(php_mb2_sapi_filter, php_mb2_sapi_filter_init);
+	sapi_register_input_filter(php_mb2_sapi_filter, php_mb2_sapi_filter_init TSRMLS_CC);
 }
 
-static php_mb2_unregister_sapi_filter(TSRMLS_C)
+static php_mb2_unregister_sapi_filter(TSRMLS_D)
 {
 	sapi_module.input_filter_init = php_mb2_next_input_filter_init;
 	sapi_module.input_filter = php_mb2_next_input_filter;
